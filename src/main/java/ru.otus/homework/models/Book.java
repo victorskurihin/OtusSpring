@@ -22,7 +22,7 @@ public class Book implements Serializable, DataSet
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Column(unique = true)
     private String isbn;
 
     @Column
@@ -42,10 +42,9 @@ public class Book implements Serializable, DataSet
     )
     private List<Author> authors = new LinkedList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
-
 
     @Override
     public boolean equals(Object o) {

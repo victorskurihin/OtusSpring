@@ -13,6 +13,8 @@ public class ReviewDto
 {
     private String id;
 
+    private String bookId;
+
     private String review;
 
     public ReviewDto(Review entry)
@@ -20,6 +22,7 @@ public class ReviewDto
         assert entry != null;
 
         id = Long.toString(entry.getId());
+        bookId = Long.toString(entry.getBook().getId());
         review = entry.getReview();
     }
 
@@ -27,6 +30,7 @@ public class ReviewDto
     {
         assert entry != null;
 
+        entry.setId(Long.parseLong(id));
         entry.setReview(review);
 
         return entry;
@@ -35,7 +39,6 @@ public class ReviewDto
     public Review createReview(Book book)
     {
         Review review = new Review();
-        review.setId(0L);
         review.setBook(book);
 
         return updateReview(review);

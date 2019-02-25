@@ -1,4 +1,4 @@
-INSERT INTO genre (genre_id,genre)
+INSERT INTO genre (genre_id,value)
 SELECT 1, 'Information Technology'
   FROM dual
  WHERE NOT exists(SELECT * FROM genre WHERE genre_id = 1);

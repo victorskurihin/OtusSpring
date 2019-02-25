@@ -23,5 +23,5 @@ public class Genre implements Serializable, DataSet
     private long id;
 
     @Column(unique = true)
-    private String genre;
+    private String value;
 }

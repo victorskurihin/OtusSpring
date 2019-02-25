@@ -4,7 +4,7 @@ DELETE FROM book_review;
 DELETE FROM book;
 DELETE FROM genre;
 
-INSERT INTO genre (genre_id, genre)
+INSERT INTO genre (genre_id, value)
 VALUES (2, 'test_genre_2');
 
 INSERT INTO book (book_id, isbn, title, edition_number, copyright, genre_id)

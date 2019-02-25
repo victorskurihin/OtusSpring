@@ -13,7 +13,11 @@ public interface DatabaseService
 {
     Optional<Author> getAuthorById(long id);
 
+    Optional<Author> getAuthorByFirstNameAndLastName(String firstName, String lastName);
+
     List<Author> getAllAuthors();
+
+    List<Author> getAuthorsForBookId(long id);
 
     Author saveAuthor(Author author);
 
@@ -26,6 +30,8 @@ public interface DatabaseService
     List<Book> getAllBooks();
 
     Book saveBook(Book book);
+
+    Book saveBookNewGenre(Book book, String genre);
 
     void removeBook(long id);
 

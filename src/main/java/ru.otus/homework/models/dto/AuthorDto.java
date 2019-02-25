@@ -29,6 +29,7 @@ public class AuthorDto
     {
         assert author != null;
 
+        author.setId(Long.parseLong(id));
         author.setFirstName(firstName);
         author.setLastName(lastName);
 
@@ -38,7 +39,6 @@ public class AuthorDto
     public Author createAuthor()
     {
         Author author = new Author();
-        author.setId(0L);
 
         return updateAuthor(author);
     }

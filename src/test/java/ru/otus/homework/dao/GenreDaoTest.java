@@ -37,7 +37,7 @@ class GenreDaoTest
     {
         Genre expected = createGenre0();
         repository.save(expected);
-        expected.setGenre(expected.getGenre() + "_test");
+        expected.setValue(expected.getValue() + "_test");
         repository.save(expected);
         Genre test = repository.findById(expected.getId()).orElse(null);
         assertEquals(expected, test);

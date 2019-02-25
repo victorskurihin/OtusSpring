@@ -46,7 +46,7 @@ public class BookDto
                 .map(author -> author.getFirstName() + " " + author.getLastName())
                 .collect(Collectors.toList());
         }
-        genre = book.getGenre().getGenre();
+        genre = book.getGenre().getValue();
     }
 
     public Book updateBook(Book book)

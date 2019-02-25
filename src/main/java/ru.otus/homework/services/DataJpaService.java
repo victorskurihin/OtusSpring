@@ -12,9 +12,7 @@ import ru.otus.homework.models.Book;
 import ru.otus.homework.models.Genre;
 import ru.otus.homework.models.Review;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class DataJpaService implements DatabaseService
@@ -43,9 +41,26 @@ public class DataJpaService implements DatabaseService
     }
 
     @Override
+    public Optional<Author> getAuthorByFirstNameAndLastName(String firstName, String lastName)
+    {
+        return authorDao.findByFirstNameAndLastName(firstName, lastName);
+    }
+
+    @Override
     public List<Author> getAllAuthors()
     {
         return authorDao.findAll();
+    }
+
+    @Override
+    public List<Author> getAuthorsForBookId(long id)
+    {
+        Optional<Book> optionalBook = bookDao.findById(id);
+        if (optionalBook.isPresent()) {
+            return optionalBook.get().getAuthors();
+        }
+
+        return Collections.emptyList();
     }
 
     @Override
@@ -99,12 +114,18 @@ public class DataJpaService implements DatabaseService
             }
         });
 
-        if ( ! Objects.isNull(book.getGenre()) && book.getGenre().getId() == 0L) {
-            String genreValue = book.getGenre().getGenre();
-            Optional<Genre> optionalGenre = getGenreByValue(genreValue);
-            Genre genre = optionalGenre.orElse(new Genre(0L, genreValue));
-            book.setGenre(genre);
+        if ( ! Objects.isNull(book.getGenre()) && book.getId() == 0) {
+            getGenreByValue(book.getGenre().getValue()).ifPresent(book::setGenre);
         }
+
+        return bookDao.save(book);
+    }
+
+    @Override
+    @Transactional
+    public Book saveBookNewGenre(Book book, String genre)
+    {
+        book.setGenre(saveGenre(new Genre(0L, genre)));
 
         return bookDao.save(book);
     }
@@ -126,7 +147,7 @@ public class DataJpaService implements DatabaseService
     @Override
     public Optional<Genre> getGenreByValue(String genre)
     {
-        return genreDao.findByGenre(genre);
+        return genreDao.findByValue(genre);
     }
 
     @Override

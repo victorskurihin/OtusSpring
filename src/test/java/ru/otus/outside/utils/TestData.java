@@ -11,6 +11,10 @@ public class TestData
 
     public static long TEST_ID = 13L;
 
+    public static String TEST_SID = "13";
+
+    public static String TEST_SID0 = "0";
+
     public static int TEST_NUM = 3;
 
     public static String TEST_FIRST_NAME = "test_first_name_13";
@@ -51,7 +55,16 @@ public class TestData
     {
         Genre result = new Genre();
         result.setId(0L);
-        result.setGenre("test_genre_0");
+        result.setValue("test_genre_0");
+
+        return result;
+    }
+
+    public static Genre createGenre1()
+    {
+        Genre result = new Genre();
+        result.setId(0L);
+        result.setValue("test_genre_1");
 
         return result;
     }
