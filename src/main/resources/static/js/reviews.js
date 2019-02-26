@@ -5,7 +5,7 @@ function setTriggers() {
     // TODO
 }
 
-function tableHeader(body) {
+function appendReviewsTableHeader(body) {
     body.append(
         '<thead><tr>'
         + '<td>Рецензии</td>'
@@ -15,7 +15,7 @@ function tableHeader(body) {
     );
 }
 
-function addRow(body, review) {
+function addReviewRow(body, review) {
     body.append(
         '<tr>'
         + '  <td>' + review.review + '</td>'
@@ -34,7 +34,7 @@ function addRow(body, review) {
     );
 }
 
-function tableFooter(body) {
+function appendReviewsTableFooter(body) {
     body.append(
         '<tr>'
         + '  <td colspan="3">'
@@ -58,7 +58,7 @@ function tableFooter(body) {
     );
 }
 
-function renderList(data) {
+function renderReviewsList(data) {
     var list = data == null ? [] : (data instanceof Array ? data : [data]);
 
     reviewsTableDiv.empty();
@@ -66,28 +66,28 @@ function renderList(data) {
 
     var reviewsTable = $('#reviews-table');
 
-    tableHeader(reviewsTable);
+    appendReviewsTableHeader(reviewsTable);
     reviewsTable.append('<tbody id="reviews-table-tbody"></tbody>');
 
     var reviewsTableTbody = $('#reviews-table-tbody');
 
-    $.each(list, function(index, entry) { addRow(reviewsTableTbody, entry) });
-    tableFooter(reviewsTableTbody);
+    $.each(list, function(index, entry) { addReviewRow(reviewsTableTbody, entry) });
+    appendReviewsTableFooter(reviewsTableTbody);
     setTriggers()
 }
 
-function findAll() {
-    console.log('findAll');
+function findAllReviews() {
+    console.log('findAllReviews');
     $.ajax({
         type: 'GET',
         url: reviewsURL + '/' + bookId,
         dataType: "json",
-        success: renderList
+        success: renderReviewsList
     })
 }
 
 function main() {
-    findAll()
+    findAllReviews()
 }
 
 jQuery(document).ready(main());

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import static ru.otus.homework.controllers.Constants.*;
 
 @Controller
-public class ReviewController
+public class ReviewsController
 {
     @GetMapping(REQUEST_REVIEWS_LIST)
     public String booksList(@RequestParam long bookId, Model model)

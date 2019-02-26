@@ -1,11 +1,33 @@
 
 var booksTableDiv = $('#books-table-div');
 
-function setTriggers() {
-    // TODO
+function deleteBook(bookId) {
+    console.log('deleteBook with id: '+ bookId);
+    $.ajax({
+        type: 'DELETE',
+        url: booksURL + '/' + bookId,
+        success: function(data, textStatus, jqXHR) {
+            console.log("Book deleted successfully: " + textStatus);
+            window.alert("Book deleted successfully: " + textStatus);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("delete Book with error: " + textStatus);
+            window.alert("delete Book with error: " + textStatus);
+        }
+    })
 }
 
-function addLi(body, author) {
+function setTriggers() {
+    $("button[id^='btnDeleteBook']").each(function (i, el) {
+        console.log(el.id);
+        $('#' + el.id).click(function() {
+            deleteBook(el.name);
+            return false
+        })
+    })
+}
+
+function addAuthorLi(body, author) {
     body.append('<li>' + author.firstName + ' ' + author.lastName + '</li>')
 }
 
@@ -18,7 +40,7 @@ function renderAuthorsForBookList(data) {
     var authorsListN = $('#authors-list-' + bookId);
 
     authorsListN.empty();
-    $.each(list, function(index, entry) { addLi(authorsListN, entry) });
+    $.each(list, function(index, entry) { addAuthorLi(authorsListN, entry) });
 }
 
 function findAuthorsForBook(id) {
@@ -31,7 +53,7 @@ function findAuthorsForBook(id) {
     });
 }
 
-function tableHeader(body) {
+function appendBooksTableHeader(body) {
     body.append(
         '<thead><tr>'
         + '  <td>ISBN</td>'
@@ -47,7 +69,7 @@ function tableHeader(body) {
     );
 }
 
-function addRow(body, book) {
+function addBookRow(body, book) {
     body.append(
         '<tr>'
         + '  <td class="tg0-cl">' + book.isbn + '</td>'
@@ -66,9 +88,9 @@ function addRow(body, book) {
         + '      <a href="/book-edit?bookId=' + book.id + '">Edit</a>'
         + '  </td>'
         + '  <td>'
-        + '    <form method="post" action="/book-delete" class="inline">'
-        + '      <input hidden type="hidden" name="bookId" value="' + book.id + '"/>'
-        + '      <button type="submit" name="submit_param" value="submit_value" class="link-button">'
+        + '    <form id="book-delete-form" class="inline">'
+        + '      <button form="book-delete-form" id="btnDeleteBook-' + book.id + '" name="' + book.id + '" '
+        + 'class="link-button">'
         + 'Delete</button>'
         + '    </form>'
         + '  </td>'
@@ -77,7 +99,19 @@ function addRow(body, book) {
     findAuthorsForBook(book.id)
 }
 
-function renderList(data) {
+function appendBooksTableFooter(body) {
+    body.append(
+        '<tr>'
+        + '  <td colspan="9">'
+        + '    <form id="button-form" th:action="@{/book-create}" method="get" action="/book-create">'
+        + '      <button type="submit" >Create new</button>'
+        + '    </form>'
+        + '  </td>'
+        + '</tr>'
+    );
+}
+
+function renderBooksList(data) {
     var list = data == null ? [] : (data instanceof Array ? data : [data]);
 
     booksTableDiv.empty();
@@ -85,24 +119,28 @@ function renderList(data) {
 
     var booksTable = $('#books-table');
 
-    tableHeader(booksTable);
+    appendBooksTableHeader(booksTable);
     booksTable.append('<tbody id="books-table-tbody"></tbody>');
-    $.each(list, function(index, entry) { addRow($('#books-table-tbody'), entry) });
+
+    var booksTableTbody = $('#books-table-tbody');
+
+    $.each(list, function(index, entry) { addBookRow(booksTableTbody, entry) });
+    appendBooksTableFooter(booksTableTbody);
     setTriggers()
 }
 
-function findAll() {
-    console.log('findAll');
+function findAllBooks() {
+    console.log('findAllBooks');
     $.ajax({
         type: 'GET',
         url: booksURL,
         dataType: "json",
-        success: renderList
+        success: renderBooksList
     })
 }
 
 function main() {
-    findAll()
+    findAllBooks()
 }
 
 jQuery(document).ready(main());

@@ -2,10 +2,14 @@ package ru.otus.homework.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.otus.homework.models.dto.BookDto;
+import ru.otus.homework.models.Book;
+import ru.otus.homework.models.Genre;
+import ru.otus.homework.models.dto.*;
 import ru.otus.homework.services.DatabaseService;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static ru.otus.homework.controllers.Constants.REST_API;
@@ -31,10 +35,46 @@ public class BooksRestController
             .collect(Collectors.toList());
     }
 
-    @PutMapping(REST_API + REST_V1_BOOKS)
-    public String updateBook(@RequestBody BookDto book)
+    private void saveBook(Book book, String genre)
     {
-        System.err.println("book = " + book);
-        return "HTTP PUT was called";
+        Optional<Genre> optionalGenre = databaseService.getGenreByValue(genre);
+        if (optionalGenre.isPresent()) {
+            book.setGenre(optionalGenre.get());
+            databaseService.saveBook(book);
+        }
+        else {
+            databaseService.saveBookNewGenre(book, genre);
+        }
+    }
+
+    @PutMapping(REST_API + REST_V1_BOOKS)
+    public ResponseStatusDto updateBook(@RequestBody BookDto bookDto)
+    {
+        long bookId = Long.parseLong(bookDto.getId());
+
+        Optional<Book> bookOptional = databaseService.getBookById(bookId);
+        bookOptional.ifPresent(bookDto::updateBook);
+        Book book = bookOptional.orElse(bookDto.createBook(bookId));
+        saveBook(book, bookDto.getGenre());
+
+        return new ResponseStatusOk();
+    }
+
+    @PostMapping(REST_API + REST_V1_BOOKS)
+    public ResponseStatusDto createBook(@RequestBody BookDto bookDto, HttpServletResponse response)
+    {
+        Book book = bookDto.createBook(0L);
+        saveBook(book, bookDto.getGenre());
+
+        response.setStatus(HttpServletResponse.SC_CREATED);
+        return new ResponseStatusCreated();
+    }
+
+    @DeleteMapping(REST_API + REST_V1_BOOKS + "/{bookId}")
+    public ResponseStatusDto deleteBook(@PathVariable long bookId, HttpServletResponse response) {
+        databaseService.removeBook(bookId);
+
+        response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        return new ResponseStatusNoContent();
     }
 }

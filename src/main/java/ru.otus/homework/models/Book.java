@@ -34,7 +34,7 @@ public class Book implements Serializable, DataSet
     @Column
     private String copyright;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
         name = "author_isbn",
         joinColumns = @JoinColumn(name = "book_id"),
