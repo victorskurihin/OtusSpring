@@ -13,7 +13,7 @@ public class ReviewController
     @GetMapping(REQUEST_REVIEWS_LIST)
     public String booksList(@RequestParam long bookId, Model model)
     {
-        model.addAttribute(MODEL_BOOK, bookId);
+        model.addAttribute(MODEL_BOOK_ID, bookId);
         model.addAttribute(MODEL_REVIEWS, REST_API + REST_V1_REVIEWS);
 
         return VIEW_REVIEWS_LIST;

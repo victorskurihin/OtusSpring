@@ -1,8 +1,7 @@
 package ru.otus.homework.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.otus.homework.models.dto.BookDto;
 import ru.otus.homework.services.DatabaseService;
 
@@ -30,5 +29,12 @@ public class BooksRestController
             .stream()
             .map(BookDto::new)
             .collect(Collectors.toList());
+    }
+
+    @PutMapping(REST_API + REST_V1_BOOKS)
+    public String updateBook(@RequestBody BookDto book)
+    {
+        System.err.println("book = " + book);
+        return "HTTP PUT was called";
     }
 }

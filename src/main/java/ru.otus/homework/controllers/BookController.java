@@ -1,14 +1,30 @@
 package ru.otus.homework.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.otus.homework.models.Book;
+import ru.otus.homework.models.Review;
+import ru.otus.homework.models.dto.BookDto;
+import ru.otus.homework.services.DatabaseService;
+
+import java.util.List;
+import java.util.Optional;
 
 import static ru.otus.homework.controllers.Constants.*;
 
 @Controller
 public class BookController
 {
+    private DatabaseService databaseService;
+
+    @Autowired
+    public BookController(DatabaseService databaseService)
+    {
+        this.databaseService = databaseService;
+    }
+
     @GetMapping("/")
     public String booksList(Model model)
     {
@@ -16,5 +32,17 @@ public class BookController
         model.addAttribute(MODEL_AUTHORS, REST_API + REST_V1_AUTHORS);
 
         return VIEW_BOOKS_LIST;
+    }
+
+    @GetMapping(REQUEST_BOOK_EDIT)
+    public String toEditBook(@RequestParam long bookId, Model model)
+    {
+
+        Optional<Book> bookOptional = databaseService.getBookById(bookId);
+        BookDto dto = new BookDto(bookOptional.orElse(new Book()));
+        model.addAttribute(MODEL_BOOK, dto);
+        model.addAttribute(MODEL_BOOKS, REST_API + REST_V1_BOOKS);
+
+        return VIEW_BOOK_EDIT;
     }
 }

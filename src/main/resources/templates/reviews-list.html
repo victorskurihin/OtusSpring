@@ -16,52 +16,6 @@
 
     <div id="reviews-table-div"></div>
 
-    <table class="tg0">
-        <thead>
-        <tr>
-            <td>Рецензии</td>
-            <td></td>
-            <td></td>
-        </tr>
-        </thead>
-        <tbody id="reviews-tboby">
-        <tr th:each="review : ${reviews}">
-            <td th:text="${review.review}">title</td>
-            <td>
-                <a th:href="@{/review-edit(reviewId=${review.id},bookId=${bookId})}" href="review-edit.html">Edit</a>
-            </td>
-            <td>
-                <form th:action="@{/review-delete}" method="post" action="review-delete" class="inline">
-                    <input hidden type="hidden" name="reviewId" value="0" th:value="${review.id}"/>
-                    <input hidden type="hidden" name="bookId" value="0" th:value="${bookId}"/>
-                    <button type="submit" name="submit_param" value="submit_value" class="link-button">
-                        Delete
-                    </button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                <form id="button-form" th:action="@{/review-create}" method="get" action="review-create.html">
-                    <div class="dtb0">
-                        <div class="dtb0Body">
-                            <div class="dtb0Row">
-                                <div class="dtb0Cell">
-                                    <button type="reset" onclick="history.back()">Go Back</button>
-                                </div>
-                                <div class="dtb0Cell">
-                                    <input hidden type="hidden" name="bookId" value="0" th:value="${bookId}"/>
-                                    <button type="submit" >Create new</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <script type="text/javascript" language="javascript" src="js/reviws.js"></script>
+    <script type="text/javascript" language="javascript" src="js/reviews.js"></script>
 </body>
 </html>

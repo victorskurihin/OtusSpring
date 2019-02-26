@@ -60,17 +60,16 @@ function addRow(body, book) {
         + '  </td>'
         + '  <td>' + book.genre + '</td>'
         + '  <td>'
-        + '      <a href="reviews-list?boodId=' + book.id + '">Reviews</a>'
+        + '      <a href="/reviews-list?bookId=' + book.id + '">Reviews</a>'
         + '  </td>'
         + '  <td>'
-        + '      <a href="book-edit?bookId=' + book.id + '">Edit</a>'
+        + '      <a href="/book-edit?bookId=' + book.id + '">Edit</a>'
         + '  </td>'
         + '  <td>'
-        + '    <form method="post" action="book-delete" class="inline">'
+        + '    <form method="post" action="/book-delete" class="inline">'
         + '      <input hidden type="hidden" name="bookId" value="' + book.id + '"/>'
         + '      <button type="submit" name="submit_param" value="submit_value" class="link-button">'
-        + 'Delete'
-        + '      </button>'
+        + 'Delete</button>'
         + '    </form>'
         + '  </td>'
         + '</tr>'
@@ -87,7 +86,7 @@ function renderList(data) {
     var booksTable = $('#books-table');
 
     tableHeader(booksTable);
-    booksTable.append('<tbody id ="books-table-tbody"></tbody>');
+    booksTable.append('<tbody id="books-table-tbody"></tbody>');
     $.each(list, function(index, entry) { addRow($('#books-table-tbody'), entry) });
     setTriggers()
 }
