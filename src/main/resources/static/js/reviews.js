@@ -8,9 +8,17 @@ function setTriggers() {
 function appendReviewsTableHeader(body) {
     body.append(
         '<thead><tr>'
-        + '<td>Рецензии</td>'
-        + ' <td></td>'
-        + ' <td></td>'
+        + '  <td>Рецензии</td>'
+        + '  <td>'
+        + '    <form id="book-edit-form" class="inline">'
+        + '      <button form="book-edit-form" class="link-button-disabled" onclick="return false">Edit</button>'
+        + '    </form>'
+        + '  </td>'
+        + '  <td>'
+        + '    <form id="book-delete-form" class="inline">'
+        + '      <button form="book-delete-form" class="link-button-disabled" onclick="return false">Delete</button>'
+        + '    </form>'
+        + '  </td>'
         + '</tr></thead>'
     );
 }
@@ -24,9 +32,9 @@ function addReviewRow(body, review) {
         + '  </td>'
         + '  <td>'
         + '    <form method="post" action="/review-delete" class="inline">'
-        + '         <input hidden type="hidden" name="reviewId" value="' + review.id + '"/>'
-        + '         <input hidden type="hidden" name="bookId" value="' + bookId + '"/>'
-        + '         <button type="submit" name="submit_param" value="submit_value" class="link-button">'
+        + '      <input hidden type="hidden" name="reviewId" value="' + review.id + '"/>'
+        + '      <input hidden type="hidden" name="bookId" value="' + bookId + '"/>'
+        + '      <button type="submit" name="submit_param" value="submit_value" class="link-button">'
         + 'Delete</button>'
         + '    </form>'
         + '  </td>'

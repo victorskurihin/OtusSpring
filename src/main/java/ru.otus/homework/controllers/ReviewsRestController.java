@@ -1,15 +1,17 @@
 package ru.otus.homework.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import ru.otus.homework.models.dto.BookDto;
-import ru.otus.homework.models.dto.ResponseCountDto;
-import ru.otus.homework.models.dto.ReviewDto;
+import org.springframework.web.bind.annotation.*;
+import ru.otus.homework.exceptions.BadValueForReviewIdException;
+import ru.otus.homework.exceptions.BookNotFoundException;
+import ru.otus.homework.models.Book;
+import ru.otus.homework.models.Review;
+import ru.otus.homework.models.dto.*;
 import ru.otus.homework.services.DatabaseService;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static ru.otus.homework.controllers.Constants.*;
@@ -41,5 +43,45 @@ public class ReviewsRestController
     public ResponseCountDto countReviewsByBookId(@PathVariable long id)
     {
         return new ResponseCountDto(databaseService.countReviewsByBookId(id));
+    }
+
+    @PutMapping(REST_API + REST_V1_REVIEWS)
+    public ResponseStatusDto updateReview (@RequestBody ReviewDto reviewDto)
+    {
+        long bookId = Long.parseLong(reviewDto.getBookId());
+        long reviewId = Long.parseLong(reviewDto.getId());
+        if (reviewId < 1) throw new BadValueForReviewIdException();
+
+        Optional<Review> reviewOptional = databaseService.getReviewById(reviewId);
+        reviewOptional.ifPresent(reviewDto::updateReview);
+        Review review = reviewOptional.orElse(reviewDto.createReview(
+            databaseService.getBookById(bookId).orElseThrow(BookNotFoundException::new)
+        ));
+        databaseService.saveReview(review);
+
+        return new ResponseStatusOk();
+    }
+
+    @PostMapping(REST_API + REST_V1_REVIEWS)
+    public ResponseStatusDto createReview(@RequestBody ReviewDto reviewDto, HttpServletResponse response)
+    {
+        long bookId = Long.parseLong(reviewDto.getBookId());
+        long reviewId = Long.parseLong(reviewDto.getId());
+        if (reviewId != 0) throw new BadValueForReviewIdException();
+
+        Book book = databaseService.getBookById(bookId).orElseThrow(BookNotFoundException::new);
+        Review review = new Review(0L, reviewDto.getReview(), book);
+        databaseService.saveReview(review);
+
+        response.setStatus(HttpServletResponse.SC_CREATED);
+        return new ResponseStatusCreated();
+    }
+
+    @DeleteMapping(REST_API + REST_V1_REVIEWS + "/{reviewId}")
+    public ResponseStatusDto deleteReview(@PathVariable long reviewId, HttpServletResponse response)
+    {
+        databaseService.removeReview(reviewId);
+        response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        return new ResponseStatusNoContent();
     }
 }

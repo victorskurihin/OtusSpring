@@ -1,20 +1,20 @@
 
 function bookFormToJSON() {
-	var bookId = $('#bookId');
-    var bookIsbn = $('#bookIsbn');
-    var bookTitle = $('#bookTitle');
-    var bookEditionNumber = $('#bookEditionNumber');
-    var bookCopyright = $('#bookCopyright');
-    var bookGenre = $('#bookGenre');
+	var bookId = $('#bookId').val();
+    var bookIsbn = $('#bookIsbn').val();
+    var bookTitle = $('#bookTitle').val();
+    var bookEditionNumber = $('#bookEditionNumber').val();
+    var bookCopyright = $('#bookCopyright').val();
+    var bookGenre = $('#bookGenre').val();
 
     return JSON.stringify({
-        "id": bookId === "" ? "0" : bookId.val(),
-        "isbn": bookIsbn.val(),
-        "title": bookTitle.val(),
-        "editionNumber": bookEditionNumber.val(),
-        "copyright": bookCopyright.val(),
+        "id": bookId === "" ? "0" : bookId,
+        "isbn": bookIsbn,
+        "title": bookTitle,
+        "editionNumber": bookEditionNumber,
+        "copyright": bookCopyright,
         "authors": null,
-        "genre": bookGenre.val()
+        "genre": bookGenre
     })
 }
 

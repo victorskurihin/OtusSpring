@@ -104,3 +104,10 @@
     color:red;
 }
 
+.link-button-disabled {
+    background: none;
+    border: none;
+}
+.link-button-disabled:focus {
+    outline: none;
+}

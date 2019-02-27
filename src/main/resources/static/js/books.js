@@ -63,27 +63,38 @@ function appendBooksTableHeader(body) {
         + '  <td>Автор(ы)</td>'
         + '  <td>Жанр</td>'
         + '  <td>Рецензии</td>'
-        + '  <td></td>'
-        + '  <td></td>'
+        + '  <td>'
+        + '    <form id="book-edit-form" class="inline">'
+        + '      <button form="book-edit-form" class="link-button-disabled" onclick="return false">Edit</button>'
+        + '    </form>'
+        + '  </td>'
+        + '  <td>'
+        + '    <form id="book-delete-form" class="inline">'
+        + '      <button form="book-delete-form" class="link-button-disabled" onclick="return false">Delete</button>'
+        + '    </form>'
+        + '  </td>'
         + '</tr></thead>'
     );
 }
 
-function opportunityOfDeleteBook(btnDeleteBookId, book.id) {
+function opportunityOfDeleteBook(btnDeleteBookId, bookId) {
     console.log('opportunityOfDeleteBook');
     $.ajax({
         type: 'GET',
-        url: reviewsURL + '/count/by-book/' + id,
+        url: reviewsURL + '/count/by-book/' + bookId,
         dataType: "json",
         success: function (data) {
-            console.log('opportunityOfDeleteBook inline function data: ' + data);
-            $(btnDeleteBookId).hide()
+            console.log('opportunityOfDeleteBook inline function data: ' + data.count);
+            if (data.count > 0) {
+                $('#' + btnDeleteBookId).hide()
+            }
         }
     })
 }
 
 function addBookRow(body, book) {
-    btnDeleteBookId = "btnDeleteBook-' + book.id
+    btnDeleteBookId = 'btnDeleteBook-' + book.id;
+    bookDeleteForm = 'book-delete-form-' + book.id;
     body.append(
         '<tr>'
         + '  <td class="tg0-cl">' + book.isbn + '</td>'
@@ -102,8 +113,8 @@ function addBookRow(body, book) {
         + '      <a href="/book-edit?bookId=' + book.id + '">Edit</a>'
         + '  </td>'
         + '  <td>'
-        + '    <form id="book-delete-form" class="inline">'
-        + '      <button form="book-delete-form" id="' + btnDeleteBookId + '" name="' + book.id + '" '
+        + '    <form id="' + bookDeleteForm + '" class="inline">'
+        + '      <button form="' + bookDeleteForm + '" id="' + btnDeleteBookId + '" name="' + book.id + '" '
         + 'class="link-button">'
         + 'Delete</button>'
         + '    </form>'
