@@ -24,14 +24,11 @@ public class Constants
     public static final String VIEW_REVIEW_EDIT = "review-edit.html";
 
     public static final String REQUEST_AUTHOR_CREATE = "/author-create";
-    public static final String REQUEST_AUTHOR_DELETE = "/author-delete";
     public static final String REQUEST_AUTHOR_EDIT = "/author-edit";
     public static final String REQUEST_BOOK_AUTHORS_LIST = "/book-authors-list";
     public static final String REQUEST_BOOK_CREATE = "/book-create";
-    public static final String REQUEST_BOOK_DELETE = "/book-delete";
     public static final String REQUEST_BOOK_EDIT = "/book-edit";
     public static final String REQUEST_REVIEWS_LIST = "/reviews-list";
     public static final String REQUEST_REVIEW_CREATE = "/review-create";
-    public static final String REQUEST_REVIEW_DELETE = "/review-delete";
     public static final String REQUEST_REVIEW_EDIT = "/review-edit";
 }
