@@ -50,7 +50,7 @@ function findAuthorsForBook(id) {
         url: authorsURL + '/' + id,
         dataType: "json",
         success: renderAuthorsForBookList
-    });
+    })
 }
 
 function appendBooksTableHeader(body) {
@@ -69,7 +69,21 @@ function appendBooksTableHeader(body) {
     );
 }
 
+function opportunityOfDeleteBook(btnDeleteBookId, book.id) {
+    console.log('opportunityOfDeleteBook');
+    $.ajax({
+        type: 'GET',
+        url: reviewsURL + '/count/by-book/' + id,
+        dataType: "json",
+        success: function (data) {
+            console.log('opportunityOfDeleteBook inline function data: ' + data);
+            $(btnDeleteBookId).hide()
+        }
+    })
+}
+
 function addBookRow(body, book) {
+    btnDeleteBookId = "btnDeleteBook-' + book.id
     body.append(
         '<tr>'
         + '  <td class="tg0-cl">' + book.isbn + '</td>'
@@ -89,13 +103,14 @@ function addBookRow(body, book) {
         + '  </td>'
         + '  <td>'
         + '    <form id="book-delete-form" class="inline">'
-        + '      <button form="book-delete-form" id="btnDeleteBook-' + book.id + '" name="' + book.id + '" '
+        + '      <button form="book-delete-form" id="' + btnDeleteBookId + '" name="' + book.id + '" '
         + 'class="link-button">'
         + 'Delete</button>'
         + '    </form>'
         + '  </td>'
         + '</tr>'
     );
+    opportunityOfDeleteBook(btnDeleteBookId, book.id);
     findAuthorsForBook(book.id)
 }
 

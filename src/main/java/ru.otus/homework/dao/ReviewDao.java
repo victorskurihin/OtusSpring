@@ -13,6 +13,12 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public interface ReviewDao extends CrudRepository<Review, Long>
 {
+    @Query("SELECT COUNT(r) FROM Review r"
+        + " JOIN FETCH r.book JOIN r.book b"
+        + " WHERE b.id = :id"
+    )
+    long countByBookId(@Param("id") long id);
+
     @Query("SELECT DISTINCT r FROM Review r LEFT JOIN FETCH r.book b WHERE r.id = :id")
     Optional<Review> findById(@Param("id") long id);
 

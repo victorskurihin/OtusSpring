@@ -45,6 +45,8 @@ public interface DatabaseService
 
     void removeGenre(long id);
 
+    long countReviewsByBookId(long id);
+
     Optional<Review> getReviewById(long id);
 
     List<Review> getAllReviews();

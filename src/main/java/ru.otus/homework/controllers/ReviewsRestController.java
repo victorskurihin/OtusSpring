@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import ru.otus.homework.models.dto.BookDto;
+import ru.otus.homework.models.dto.ResponseCountDto;
 import ru.otus.homework.models.dto.ReviewDto;
 import ru.otus.homework.services.DatabaseService;
 
@@ -34,5 +35,11 @@ public class ReviewsRestController
             .map(ReviewDto::new)
             .peek(reviewDto -> reviewDto.setBookId(bookId))
             .collect(Collectors.toList());
+    }
+
+    @GetMapping(REST_API + REST_V1_REVIEWS + "/count/by-book/{id}")
+    public ResponseCountDto countReviewsByBookId(@PathVariable long id)
+    {
+        return new ResponseCountDto(databaseService.countReviewsByBookId(id));
     }
 }

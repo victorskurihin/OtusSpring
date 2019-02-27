@@ -172,6 +172,12 @@ public class DataJpaService implements DatabaseService
 
 
     @Override
+    public long countReviewsByBookId(long id)
+    {
+        return reviewDao.countByBookId(id);
+    }
+
+    @Override
     public Optional<Review> getReviewById(long id)
     {
         return reviewDao.findById(id);

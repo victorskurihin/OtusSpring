@@ -28,6 +28,7 @@ public class BooksController
     {
         model.addAttribute(MODEL_BOOKS, REST_API + REST_V1_BOOKS);
         model.addAttribute(MODEL_AUTHORS, REST_API + REST_V1_AUTHORS);
+        model.addAttribute(MODEL_REVIEWS, REST_API + REST_V1_REVIEWS);
 
         return VIEW_BOOKS_LIST;
     }
