@@ -187,6 +187,7 @@ class DataJpaServiceIntegrationTest
 
             // Delete
             databaseService.removeBook(updatedTest.getId());
+            databaseService.removeGenre(expectedGenre.getId());
 
             Book nullResult = databaseService.getBookById(updatedTest.getId()).orElse(null);
             assertNull(nullResult);
@@ -231,10 +232,16 @@ class DataJpaServiceIntegrationTest
             assertNotNull(updatedTest);
             assertEquals(expectedBook, updatedTest);
 
+            List<Book> bookList = databaseService.getAllBooksByAuthorId(author0.getId());
+            assertTrue(bookList.contains(expectedBook));
+            long count = databaseService.countBooksByAuthorId(author0.getId());
+            assertTrue(count > 0);
+
             // Delete
-            // List<Author> authors = updatedTest.getAuthors();
+            List<Author> authors = updatedTest.getAuthors();
             databaseService.removeBook(createdBookTest.getId());
-            // authors.forEach(author -> databaseService.removeAuthor(author.getId()));
+            authors.forEach(author -> databaseService.removeAuthor(author.getId()));
+            databaseService.removeGenre(expectedGenre.getId());
 
             // check State
             List<Genre> finishGenresList = databaseService.getAllGenres();
@@ -256,10 +263,8 @@ class DataJpaServiceIntegrationTest
             Genre genre0 = createGenre0();
 
             Book book0 = createBook0(genre0);
-            System.out.println("book1 = " + book0);
             databaseService.saveBook(book0);
             List<Book> booksList1 = databaseService.getAllBooks();
-            System.out.println("booksList1 = " + booksList1);
 
             Genre genre1 = createGenre1();
             book0.setGenre(genre1);
@@ -267,13 +272,13 @@ class DataJpaServiceIntegrationTest
             databaseService.saveBook(book0);
             Book updatedTest = databaseService.getBookById(book0.getId()).orElse(null);
             assertNotNull(updatedTest);
-            System.out.println("updatedTest = " + updatedTest);
             book0.getGenre().setId(updatedTest.getGenre().getId());
             assertEquals(book0, updatedTest);
 
             // Delete
             databaseService.removeBook(book0.getId());
             databaseService.removeGenre(genre0.getId());
+            databaseService.removeGenre(genre1.getId());
 
             // check State
             List<Genre> finishGenresList = databaseService.getAllGenres();
@@ -335,6 +340,7 @@ class DataJpaServiceIntegrationTest
             databaseService.removeReview(updatedReview0.getId());
             databaseService.removeReview(createdReview1.getId());
             databaseService.removeBook(createdBookTest.getId());
+            databaseService.removeGenre(expectedGenre.getId());
 
             // check State
             List<Genre> finishGenresList = databaseService.getAllGenres();

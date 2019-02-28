@@ -11,6 +11,8 @@ public class TestData
 
     public static long TEST_ID = 13L;
 
+    public static String TEST_SID = "13";
+
     public static int TEST_NUM = 3;
 
     public static String TEST_FIRST_NAME = "test_first_name_13";

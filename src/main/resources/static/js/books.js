@@ -9,6 +9,7 @@ function deleteBook(bookId) {
         success: function(data, textStatus, jqXHR) {
             console.log("Book deleted successfully: " + textStatus);
             window.alert("Book deleted successfully: " + textStatus);
+            setTimeout(function(){location.reload();}, 750);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("delete Book with error: " + textStatus);

@@ -25,9 +25,13 @@ public interface DatabaseService
 
     void addAuthorToBook(Author author, Book book);
 
+    long countBooksByAuthorId(long id);
+
     Optional<Book> getBookById(long id);
 
     List<Book> getAllBooks();
+
+    List<Book> getAllBooksByAuthorId(long id);
 
     Book saveBook(Book book);
 

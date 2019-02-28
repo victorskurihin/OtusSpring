@@ -27,7 +27,7 @@ class BookDaoTest
 
     public void saveNewBook(Book book)
     {
-        genreDao.save(book.getGenre());
+       genreDao.save(book.getGenre());
        repository.save(book);
     }
 

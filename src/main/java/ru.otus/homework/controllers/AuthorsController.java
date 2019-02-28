@@ -41,7 +41,7 @@ public class AuthorsController
         model.addAttribute(MODEL_BOOK_ID, bookId).addAttribute(MODEL_AUTHOR, dto);
         model.addAttribute(MODEL_AUTHORS, REST_API + REST_V1_AUTHORS);
 
-        return VIEW_AUTHOR_EDIT;
+        return VIEW_BOOK_AUTHOR_EDIT;
     }
 
     @GetMapping(REQUEST_AUTHOR_EDIT)
@@ -52,6 +52,6 @@ public class AuthorsController
         model.addAttribute(MODEL_BOOK_ID, bookId).addAttribute(MODEL_AUTHOR, dto);
         model.addAttribute(MODEL_AUTHORS, REST_API + REST_V1_AUTHORS);
 
-        return VIEW_AUTHOR_EDIT;
+        return VIEW_BOOK_AUTHOR_EDIT;
     }
 }

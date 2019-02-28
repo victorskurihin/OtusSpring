@@ -1,8 +1,31 @@
 
 var reviewsTableDiv = $('#reviews-table-div');
 
+function deleteReview(reviewId) {
+    console.log('deleteReview with id: '+ reviewId);
+    $.ajax({
+        type: 'DELETE',
+        url: reviewsURL + '/' + reviewId,
+        success: function(data, textStatus, jqXHR) {
+            console.log("Book deleted successfully: " + textStatus);
+            window.alert("Book deleted successfully: " + textStatus);
+            setTimeout(function(){location.reload();}, 750);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("delete Book with error: " + textStatus);
+            window.alert("delete Book with error: " + textStatus);
+        }
+    })
+}
+
 function setTriggers() {
-    // TODO
+    $("button[id^='btnDeleteReview']").each(function (i, el) {
+        console.log(el.id);
+        $('#' + el.id).click(function() {
+            deleteReview(el.name);
+            return false
+        })
+    })
 }
 
 function appendReviewsTableHeader(body) {
@@ -24,6 +47,8 @@ function appendReviewsTableHeader(body) {
 }
 
 function addReviewRow(body, review) {
+    btnDeleteAuthorId = 'btnDeleteReview-' + review.id;
+    bookAuthorDeleteForm = 'review-delete-form-' + review.id;
     body.append(
         '<tr>'
         + '  <td>' + review.review + '</td>'
@@ -31,10 +56,9 @@ function addReviewRow(body, review) {
         + '    <a href="/review-edit?reviewId=' + review.id + '&bookId=' + bookId + '">Edit</a>'
         + '  </td>'
         + '  <td>'
-        + '    <form method="post" action="/review-delete" class="inline">'
-        + '      <input hidden type="hidden" name="reviewId" value="' + review.id + '"/>'
-        + '      <input hidden type="hidden" name="bookId" value="' + bookId + '"/>'
-        + '      <button type="submit" name="submit_param" value="submit_value" class="link-button">'
+        + '    <form id="' + bookAuthorDeleteForm + '" class="inline">'
+        + '      <button form="' + bookAuthorDeleteForm + '" id="' + btnDeleteAuthorId + '" name="' + review.id + '" '
+        + 'class="link-button">'
         + 'Delete</button>'
         + '    </form>'
         + '  </td>'

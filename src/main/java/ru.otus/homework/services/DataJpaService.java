@@ -87,6 +87,12 @@ public class DataJpaService implements DatabaseService
     }
 
     @Override
+    public long countBooksByAuthorId(long id)
+    {
+        return bookDao.countByAuthorId(id);
+    }
+
+    @Override
     public Optional<Book> getBookById(long id)
     {
         return bookDao.findById(id);
@@ -96,6 +102,12 @@ public class DataJpaService implements DatabaseService
     public List<Book> getAllBooks()
     {
         return bookDao.findAll();
+    }
+
+    @Override
+    public List<Book> getAllBooksByAuthorId(long id)
+    {
+        return bookDao.findAllByAuthorId(id);
     }
 
     private Optional<Author> findByFirstNameAndLastName(Author a)

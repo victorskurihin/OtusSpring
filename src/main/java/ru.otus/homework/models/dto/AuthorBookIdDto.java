@@ -8,21 +8,13 @@ import ru.otus.homework.models.Author;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthorBookIdDto
+public class AuthorBookIdDto extends AuthorDto
 {
-    private String id;
-
     private String bookId;
-
-    private String firstName;
-
-    private String lastName;
 
     public AuthorBookIdDto(Author author)
     {
-        id = Long.toString(author.getId());
+        super(author);
         bookId = "0";
-        firstName = author.getFirstName();
-        lastName = author.getLastName();
     }
 }

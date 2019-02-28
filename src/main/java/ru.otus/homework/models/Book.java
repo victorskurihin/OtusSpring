@@ -42,7 +42,9 @@ public class Book implements Serializable, DataSet
     )
     private List<Author> authors = new LinkedList<>();
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = {
+        CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+    })
     @JoinColumn(name = "genre_id", nullable = false)
     private Genre genre;
 

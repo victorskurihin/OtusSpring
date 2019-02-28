@@ -16,9 +16,9 @@ public class Constants
     public static final String MODEL_REVIEW = "review";
     public static final String MODEL_REVIEWS = "reviews";
 
-    public static final String VIEW_AUTHOR_EDIT = "author-edit.html";
     public static final String VIEW_BOOKS_LIST = "books-list.html";
     public static final String VIEW_BOOK_AUTHORS_LIST = "book-authors-list.html";
+    public static final String VIEW_BOOK_AUTHOR_EDIT = "book-author-edit.html";
     public static final String VIEW_BOOK_EDIT = "book-edit.html";
     public static final String VIEW_REVIEWS_LIST = "reviews-list.html";
     public static final String VIEW_REVIEW_EDIT = "review-edit.html";

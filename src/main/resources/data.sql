@@ -40,7 +40,6 @@ VALUES (1, 1),
 INSERT INTO book_review (review_id, review, book_id)
 VALUES (11, 'Review for Advanced Java 2 Platform How to Program', 1),
        (12, 'Advanced Review for Advanced Java 2 Platform How to Program', 1),
-       (21, 'Review for XML How to Program', 2),
        (31, 'The Complete Perl Training Course review 1', 3),
        (32, 'The Complete Perl Training Course review 2', 3),
        (33, 'The Complete Perl Training Course review 3', 3);
