@@ -77,7 +77,7 @@ function appendBookAuthorsTableFooter(body) {
         + '        <div class="dtb0Body">'
         + '          <div class="dtb0Row">'
         + '            <div class="dtb0Cell">'
-        + '              <button type="reset" onclick="history.back()">Go Back</button>'
+        + '              <button type="reset" onclick="location.href = \'/\';">Home</button>'
         + '            </div>'
         + '            <div class="dtb0Cell">'
         + '              <input hidden type="hidden" name="bookId" value="' + bookId + '"/>'

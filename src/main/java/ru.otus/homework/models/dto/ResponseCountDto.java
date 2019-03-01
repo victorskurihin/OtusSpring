@@ -7,10 +7,10 @@ import lombok.Data;
 @AllArgsConstructor
 public class ResponseCountDto
 {
-    private final String count;
+    private final Long count;
 
     public ResponseCountDto(long count)
     {
-        this.count = Long.toString(count);
+        this.count = count;
     }
 }

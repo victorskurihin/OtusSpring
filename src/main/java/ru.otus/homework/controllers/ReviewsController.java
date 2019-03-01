@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.otus.homework.exceptions.BadValueForReviewIdException;
 import ru.otus.homework.models.Review;
 import ru.otus.homework.models.dto.ReviewDto;
 import ru.otus.homework.services.DatabaseService;
@@ -37,7 +38,7 @@ public class ReviewsController
     public String toCreateReview(@RequestParam long bookId, Model model)
     {
         ReviewDto dto = new ReviewDto();
-        dto.setId("0");
+        dto.setId(0L);
         model.addAttribute(MODEL_BOOK_ID, bookId);
         model.addAttribute(MODEL_REVIEW, dto);
         model.addAttribute(MODEL_REVIEWS, REST_API + REST_V1_REVIEWS);
@@ -48,8 +49,8 @@ public class ReviewsController
     @GetMapping(REQUEST_REVIEW_EDIT)
     public String toEditReview(@RequestParam long reviewId, @RequestParam long bookId, Model model)
     {
-        Optional<Review> authorOptional = databaseService.getReviewById(reviewId);
-        ReviewDto dto = new ReviewDto(authorOptional.orElse(new Review()));
+        Optional<Review> optionalReview = databaseService.getReviewById(reviewId);
+        ReviewDto dto = new ReviewDto(optionalReview.orElseThrow(BadValueForReviewIdException::new));
         model.addAttribute(MODEL_BOOK_ID, bookId);
         model.addAttribute(MODEL_REVIEW, dto);
         model.addAttribute(MODEL_REVIEWS, REST_API + REST_V1_REVIEWS);

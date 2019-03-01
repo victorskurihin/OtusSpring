@@ -11,9 +11,9 @@ import ru.otus.homework.models.Review;
 @AllArgsConstructor
 public class ReviewDto
 {
-    private String id;
+    private Long id;
 
-    private String bookId;
+    private Long bookId;
 
     private String review;
 
@@ -21,8 +21,8 @@ public class ReviewDto
     {
         assert entry != null;
 
-        id = Long.toString(entry.getId());
-        bookId = Long.toString(entry.getBook().getId());
+        id = entry.getId();
+        bookId = entry.getBook().getId();
         review = entry.getReview();
     }
 
@@ -30,7 +30,7 @@ public class ReviewDto
     {
         assert entry != null;
 
-        entry.setId(Long.parseLong(id));
+        entry.setId(id);
         entry.setReview(review);
 
         return entry;

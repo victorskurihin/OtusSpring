@@ -10,7 +10,7 @@ import ru.otus.homework.models.Author;
 @AllArgsConstructor
 public class AuthorDto
 {
-    private String id;
+    private Long id;
 
     private String firstName;
 
@@ -20,7 +20,7 @@ public class AuthorDto
     {
         assert author != null;
 
-        id = Long.toString(author.getId());
+        id = author.getId();
         firstName = author.getFirstName();
         lastName = author.getLastName();
     }
@@ -29,7 +29,7 @@ public class AuthorDto
     {
         assert author != null;
 
-        author.setId(Long.parseLong(id));
+        author.setId(id);
         author.setFirstName(firstName);
         author.setLastName(lastName);
 

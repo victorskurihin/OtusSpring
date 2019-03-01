@@ -28,12 +28,10 @@ public class AuthorsRestController
         this.databaseService = databaseService;
     }
 
-    @GetMapping(REST_API + REST_V1_AUTHORS + "/{id}")
-    public List<AuthorBookIdDto> getAuthorsForBookId(@PathVariable long id)
+    @GetMapping(REST_API + REST_V1_AUTHORS + "/{bookId}")
+    public List<AuthorBookIdDto> getAuthorsForBookId(@PathVariable long bookId)
     {
-        String bookId = Long.toString(id);
-
-        return databaseService.getAuthorsForBookId(id)
+        return databaseService.getAuthorsForBookId(bookId)
             .stream()
             .map(AuthorBookIdDto::new)
             .peek(author -> author.setBookId(bookId))
@@ -43,10 +41,9 @@ public class AuthorsRestController
     @PutMapping(REST_API + REST_V1_AUTHORS)
     public ResponseStatusDto updateAuthor(@RequestBody AuthorBookIdDto authorDto)
     {
-        long authorId = Long.parseLong(authorDto.getId());
-        if (authorId < 1) throw new BadValueForAuthorIdException();
+        if (authorDto.getId() < 1) throw new BadValueForAuthorIdException();
 
-        Optional<Author> optionalAuthor = databaseService.getAuthorById(authorId);
+        Optional<Author> optionalAuthor = databaseService.getAuthorById(authorDto.getId());
         optionalAuthor.ifPresent(author -> {
             authorDto.updateAuthor(author);
             databaseService.saveAuthor(author);
@@ -58,10 +55,8 @@ public class AuthorsRestController
     @PostMapping(REST_API + REST_V1_AUTHORS)
     public ResponseStatusDto createAuthor(@RequestBody AuthorBookIdDto authorDto, HttpServletResponse response)
     {
-        long authorId = Long.parseLong(authorDto.getId());
-        if (authorId != 0) throw new BadValueForAuthorIdException();
-        long bookId = Long.parseLong(authorDto.getBookId());
-        Optional<Book> optionalBook = databaseService.getBookById(bookId);
+        if (authorDto.getId() != 0) throw new BadValueForAuthorIdException();
+        Optional<Book> optionalBook = databaseService.getBookById(authorDto.getBookId());
         Book book = optionalBook.orElseThrow(BookNotFoundException::new);
 
         Author author = databaseService.getAuthorByFirstNameAndLastName(

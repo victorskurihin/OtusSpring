@@ -211,6 +211,7 @@ class DataJpaServiceIntegrationTest
             Genre expectedGenre = createGenre0();
             Author author0 = createAuthor0();
             Author author1 = createAuthor1();
+            author1.setId(0L);
             Book expectedBook = createBook0(expectedGenre, author0, author1);
             databaseService.saveBook(expectedBook);
 
@@ -266,8 +267,10 @@ class DataJpaServiceIntegrationTest
             databaseService.saveBook(book0);
             List<Book> booksList1 = databaseService.getAllBooks();
 
-            Genre genre1 = createGenre1();
-            book0.setGenre(genre1);
+            // Genre genre1 = createGenre1();
+            Genre savedGenre = databaseService.getGenreByValue(genre0.getValue()).get();
+            savedGenre.setValue(savedGenre.getValue() + "_test");
+            book0.setGenre(savedGenre);
 
             databaseService.saveBook(book0);
             Book updatedTest = databaseService.getBookById(book0.getId()).orElse(null);
@@ -277,8 +280,9 @@ class DataJpaServiceIntegrationTest
 
             // Delete
             databaseService.removeBook(book0.getId());
-            databaseService.removeGenre(genre0.getId());
-            databaseService.removeGenre(genre1.getId());
+            List<Genre> list1 = databaseService.getAllGenres();
+            List<Book> list2 = databaseService.getAllBooks();
+            databaseService.removeGenre(savedGenre.getId());
 
             // check State
             List<Genre> finishGenresList = databaseService.getAllGenres();

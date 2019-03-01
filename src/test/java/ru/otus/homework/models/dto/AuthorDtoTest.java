@@ -43,9 +43,9 @@ class AuthorDtoTest
         @DisplayName("Setter and getter for id")
         void testGetSetId()
         {
-            authorDto.setId(TEST);
-            assertThat(authorDto).hasFieldOrPropertyWithValue("id", TEST);
-            assertEquals(TEST, authorDto.getId());
+            authorDto.setId(TEST_ID);
+            assertThat(authorDto).hasFieldOrPropertyWithValue("id", TEST_LID);
+            assertEquals(TEST_LID, authorDto.getId());
         }
 
         @Test
@@ -75,14 +75,14 @@ class AuthorDtoTest
         @BeforeEach
         void createNew()
         {
-            authorDto = new AuthorDto(TEST_SID, TEST_FIRST_NAME, TEST_LAST_NAME);
+            authorDto = new AuthorDto(TEST_LID, TEST_FIRST_NAME, TEST_LAST_NAME);
         }
 
         @Test
         @DisplayName("initialized values in AuthorDto()")
         void defaults()
         {
-            assertThat(authorDto).hasFieldOrPropertyWithValue("id", TEST_SID);
+            assertThat(authorDto).hasFieldOrPropertyWithValue("id", TEST_LID);
             assertThat(authorDto).hasFieldOrPropertyWithValue("firstName", TEST_FIRST_NAME);
             assertThat(authorDto).hasFieldOrPropertyWithValue("lastName", TEST_LAST_NAME);
         }
@@ -92,7 +92,7 @@ class AuthorDtoTest
         void testEquals()
         {
             assertNotEquals(new AuthorDto(), authorDto);
-            AuthorDto expected = new AuthorDto(TEST_SID, TEST_FIRST_NAME, TEST_LAST_NAME);
+            AuthorDto expected = new AuthorDto(TEST_LID, TEST_FIRST_NAME, TEST_LAST_NAME);
             assertEquals(expected.hashCode(), authorDto.hashCode());
             assertEquals(expected, authorDto);
         }
@@ -115,7 +115,7 @@ class AuthorDtoTest
         {
             Author author = createAuthor0();
             AuthorDto authorDto = new AuthorDto(author);
-            assertThat(authorDto).hasFieldOrPropertyWithValue("id", "0");
+            assertThat(authorDto).hasFieldOrPropertyWithValue("id", 0L);
             assertThat(authorDto).hasFieldOrPropertyWithValue("firstName", author.getFirstName());
             assertThat(authorDto).hasFieldOrPropertyWithValue("lastName", author.getLastName());
         }
@@ -135,8 +135,8 @@ class AuthorDtoTest
         @DisplayName("when update Author from AuthorDto")
         void testCreateAuthor()
         {
-            authorDto = new AuthorDto(TEST_SID, TEST_FIRST_NAME, TEST_LAST_NAME);
-            Author expected = new Author(Long.parseLong(authorDto.getId()), authorDto.getFirstName(), authorDto.getLastName());
+            authorDto = new AuthorDto(TEST_LID, TEST_FIRST_NAME, TEST_LAST_NAME);
+            Author expected = new Author(authorDto.getId(), authorDto.getFirstName(), authorDto.getLastName());
             Author author = authorDto.createAuthor();
             assertEquals(expected, author);
         }

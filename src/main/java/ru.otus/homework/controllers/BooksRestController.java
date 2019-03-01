@@ -50,11 +50,9 @@ public class BooksRestController
     @PutMapping(REST_API + REST_V1_BOOKS)
     public ResponseStatusDto updateBook(@RequestBody BookDto bookDto)
     {
-        long bookId = Long.parseLong(bookDto.getId());
-
-        Optional<Book> bookOptional = databaseService.getBookById(bookId);
+        Optional<Book> bookOptional = databaseService.getBookById(bookDto.getId());
         bookOptional.ifPresent(bookDto::updateBook);
-        Book book = bookOptional.orElse(bookDto.createBook(bookId));
+        Book book = bookOptional.orElse(bookDto.createBook(bookDto.getId()));
         saveBook(book, bookDto.getGenre());
 
         return new ResponseStatusOk();

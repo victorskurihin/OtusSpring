@@ -28,14 +28,12 @@ public class ReviewsRestController
     }
 
     @GetMapping(REST_API + REST_V1_REVIEWS + "/{id}")
-    public List<ReviewDto> getBooks(@PathVariable long id)
+    public List<ReviewDto> getReviews(@PathVariable long id)
     {
-        String bookId = Long.toString(id);
-
         return databaseService.getAllReviewsForBookById(id)
             .stream()
             .map(ReviewDto::new)
-            .peek(reviewDto -> reviewDto.setBookId(bookId))
+            .peek(reviewDto -> reviewDto.setBookId(id))
             .collect(Collectors.toList());
     }
 
@@ -46,16 +44,14 @@ public class ReviewsRestController
     }
 
     @PutMapping(REST_API + REST_V1_REVIEWS)
-    public ResponseStatusDto updateReview (@RequestBody ReviewDto reviewDto)
+    public ResponseStatusDto updateReview(@RequestBody ReviewDto reviewDto)
     {
-        long bookId = Long.parseLong(reviewDto.getBookId());
-        long reviewId = Long.parseLong(reviewDto.getId());
-        if (reviewId < 1) throw new BadValueForReviewIdException();
+        if (reviewDto.getId()< 1) throw new BadValueForReviewIdException();
 
-        Optional<Review> reviewOptional = databaseService.getReviewById(reviewId);
+        Optional<Review> reviewOptional = databaseService.getReviewById(reviewDto.getId());
         reviewOptional.ifPresent(reviewDto::updateReview);
         Review review = reviewOptional.orElse(reviewDto.createReview(
-            databaseService.getBookById(bookId).orElseThrow(BookNotFoundException::new)
+            databaseService.getBookById(reviewDto.getBookId()).orElseThrow(BookNotFoundException::new)
         ));
         databaseService.saveReview(review);
 
@@ -65,11 +61,9 @@ public class ReviewsRestController
     @PostMapping(REST_API + REST_V1_REVIEWS)
     public ResponseStatusDto createReview(@RequestBody ReviewDto reviewDto, HttpServletResponse response)
     {
-        long bookId = Long.parseLong(reviewDto.getBookId());
-        long reviewId = Long.parseLong(reviewDto.getId());
-        if (reviewId != 0) throw new BadValueForReviewIdException();
+        if (reviewDto.getId() != 0) throw new BadValueForReviewIdException();
 
-        Book book = databaseService.getBookById(bookId).orElseThrow(BookNotFoundException::new);
+        Book book = databaseService.getBookById(reviewDto.getBookId()).orElseThrow(BookNotFoundException::new);
         Review review = new Review(0L, reviewDto.getReview(), book);
         databaseService.saveReview(review);
 

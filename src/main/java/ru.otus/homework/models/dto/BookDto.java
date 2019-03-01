@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class BookDto
 {
-    private String id;
+    private Long id;
 
     private String isbn;
 
@@ -34,7 +34,7 @@ public class BookDto
     {
         assert book != null;
 
-        id = Long.toString(book.getId());
+        id = book.getId();
         isbn = book.getIsbn();
         title = book.getTitle();
         editionNumber = Integer.toString(book.getEditionNumber());

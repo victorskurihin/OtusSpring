@@ -46,9 +46,9 @@ class BookDtoTest
         @DisplayName("Setter and getter for id")
         void testGetSetId()
         {
-            bookDto.setId(TEST);
-            assertThat(bookDto).hasFieldOrPropertyWithValue("id", TEST);
-            assertEquals(TEST, bookDto.getId());
+            bookDto.setId(TEST_LID);
+            assertThat(bookDto).hasFieldOrPropertyWithValue("id", TEST_LID);
+            assertEquals(TEST_LID, bookDto.getId());
         }
 
         @Test
@@ -103,14 +103,14 @@ class BookDtoTest
         @BeforeEach
         void createNew()
         {
-            bookDto = new BookDto(TEST_SID, TEST, TEST, TEST, TEST, null, TEST);
+            bookDto = new BookDto(TEST_LID, TEST, TEST, TEST, TEST, null, TEST);
         }
 
         @Test
         @DisplayName("initialized values in BookDto()")
         void defaults()
         {
-            assertThat(bookDto).hasFieldOrPropertyWithValue("id", TEST_SID);
+            assertThat(bookDto).hasFieldOrPropertyWithValue("id", TEST_LID);
             assertThat(bookDto).hasFieldOrPropertyWithValue("isbn", TEST);
             assertThat(bookDto).hasFieldOrPropertyWithValue("title", TEST);
             assertThat(bookDto).hasFieldOrPropertyWithValue("editionNumber", TEST);
@@ -123,7 +123,7 @@ class BookDtoTest
         void testEquals()
         {
             assertNotEquals(new BookDto(), bookDto);
-            BookDto expected = new BookDto(TEST_SID, TEST, TEST, TEST, TEST, null, TEST);
+            BookDto expected = new BookDto(TEST_LID, TEST, TEST, TEST, TEST, null, TEST);
             assertEquals(expected.hashCode(), bookDto.hashCode());
             assertEquals(expected, bookDto);
         }
@@ -146,7 +146,7 @@ class BookDtoTest
         {
             Book book = createBook0();
             BookDto bookDto = new BookDto(book);
-            assertThat(bookDto).hasFieldOrPropertyWithValue("id", "0");
+            assertThat(bookDto).hasFieldOrPropertyWithValue("id", 0L);
             assertThat(bookDto).hasFieldOrPropertyWithValue("isbn", book.getIsbn());
             assertThat(bookDto).hasFieldOrPropertyWithValue("title", book.getTitle());
             assertThat(bookDto).hasFieldOrPropertyWithValue("editionNumber", Integer.toString(book.getEditionNumber()));

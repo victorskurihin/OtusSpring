@@ -1,15 +1,18 @@
 package ru.otus.outside.utils;
 
+import org.springframework.http.MediaType;
 import ru.otus.homework.models.*;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class TestData
 {
     public static String TEST = "test";
 
     public static long TEST_ID = 13L;
+
+    public static Long TEST_LID = 13L;
 
     public static String TEST_SID = "13";
 
@@ -29,6 +32,12 @@ public class TestData
 
     public static String TEST_COMMENT_NAME = "test_comment_13";
 
+    public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(
+        MediaType.APPLICATION_JSON.getType(),
+        MediaType.APPLICATION_JSON.getSubtype(),
+        Charset.forName("utf8")
+    );
+
     public static Author createAuthor0()
     {
         Author result = new Author();
@@ -42,9 +51,19 @@ public class TestData
     public static Author createAuthor1()
     {
         Author result = new Author();
-        result.setId(0L);
+        result.setId(1L);
         result.setFirstName("test_first_name_1");
         result.setLastName("test_last_name_1");
+
+        return result;
+    }
+
+    public static Author createAuthor2()
+    {
+        Author result = new Author();
+        result.setId(2L);
+        result.setFirstName("test_first_name_2");
+        result.setLastName("test_last_name_2");
 
         return result;
     }
@@ -61,8 +80,17 @@ public class TestData
     public static Genre createGenre1()
     {
         Genre result = new Genre();
-        result.setId(0L);
+        result.setId(1L);
         result.setValue("test_genre_1");
+
+        return result;
+    }
+
+    public static Genre createGenre2()
+    {
+        Genre result = new Genre();
+        result.setId(2L);
+        result.setValue("test_genre_2");
 
         return result;
     }
@@ -107,6 +135,32 @@ public class TestData
         return result;
     }
 
+    public static Book createBook1()
+    {
+        Book result = new Book();
+        result.setId(1L);
+        result.setIsbn("test_isbn_1");
+        result.setTitle("test_title_1");
+        result.setEditionNumber(TEST_NUM);
+        result.setCopyright("test_copyright_1");
+        result.setGenre(createGenre1());
+
+        return result;
+    }
+
+    public static Book createBook2()
+    {
+        Book result = new Book();
+        result.setId(2L);
+        result.setIsbn("test_isbn_2");
+        result.setTitle("test_title_2");
+        result.setEditionNumber(TEST_NUM);
+        result.setCopyright("test_copyright_2");
+        result.setGenre(createGenre2());
+
+        return result;
+    }
+
     public static Review createReview0()
     {
         Review result = new Review();
@@ -127,12 +181,32 @@ public class TestData
         return result;
     }
 
+    public static Review createReview1()
+    {
+        Review result = new Review();
+        result.setId(1L);
+        result.setReview("test_review_1");
+        result.setBook(createBook1());
+
+        return result;
+    }
+
     public static Review createReview1(Book book)
     {
         Review result = new Review();
-        result.setId(0L);
+        result.setId(1L);
         result.setReview("test_review_1");
         result.setBook(book);
+
+        return result;
+    }
+
+    public static Review createReview2()
+    {
+        Review result = new Review();
+        result.setId(2L);
+        result.setReview("test_review_2");
+        result.setBook(createBook2());
 
         return result;
     }
@@ -140,7 +214,7 @@ public class TestData
     public static Review createReview2(Book book)
     {
         Review result = new Review();
-        result.setId(0L);
+        result.setId(2L);
         result.setReview("test_review_2");
         result.setBook(book);
 

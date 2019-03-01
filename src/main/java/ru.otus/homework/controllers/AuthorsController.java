@@ -37,7 +37,7 @@ public class AuthorsController
     public String toCreateAuthor(@RequestParam long bookId, Model model)
     {
         AuthorDto dto = new AuthorDto();
-        dto.setId("0");
+        dto.setId(0L);
         model.addAttribute(MODEL_BOOK_ID, bookId).addAttribute(MODEL_AUTHOR, dto);
         model.addAttribute(MODEL_AUTHORS, REST_API + REST_V1_AUTHORS);
 

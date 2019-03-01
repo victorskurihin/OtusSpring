@@ -10,11 +10,11 @@ import ru.otus.homework.models.Author;
 @AllArgsConstructor
 public class AuthorBookIdDto extends AuthorDto
 {
-    private String bookId;
+    private Long bookId;
 
     public AuthorBookIdDto(Author author)
     {
         super(author);
-        bookId = "0";
+        bookId = 0L;
     }
 }
