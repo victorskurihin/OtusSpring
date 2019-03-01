@@ -232,9 +232,9 @@ class DataJpaServiceIntegrationTest
             assertEquals(expectedBook, updatedTest);
 
             // Delete
-            // List<Author> authors = updatedTest.getAuthors();
+            List<Author> authors = updatedTest.getAuthors();
             databaseService.removeBook(createdBookTest.getId());
-            // authors.forEach(author -> databaseService.removeAuthor(author.getId()));
+            authors.forEach(author -> databaseService.removeAuthor(author.getId()));
 
             // check State
             List<Genre> finishGenresList = databaseService.getAllGenres();

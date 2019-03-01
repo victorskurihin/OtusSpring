@@ -37,7 +37,7 @@ public class ReviewsController
     public String toCreateReview(@RequestParam long bookId, Model model)
     {
         ReviewDto dto = new ReviewDto();
-        dto.setId("0");
+        dto.setId(0L);
         model.addAttribute(MODEL_BOOK_ID, bookId);
         model.addAttribute(MODEL_REVIEW, dto);
         model.addAttribute(MODEL_REVIEWS, REST_API + REST_V1_REVIEWS);

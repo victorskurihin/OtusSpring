@@ -37,7 +37,7 @@ public class BooksController
     public String createBook(Model model)
     {
         BookDto dto = new BookDto();
-        dto.setId("0");
+        dto.setId(0L);
         model.addAttribute(MODEL_BOOK, dto);
         model.addAttribute(MODEL_BOOKS, REST_API + REST_V1_BOOKS);
 

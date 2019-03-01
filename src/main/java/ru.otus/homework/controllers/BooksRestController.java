@@ -50,7 +50,7 @@ public class BooksRestController
     @PutMapping(REST_API + REST_V1_BOOKS)
     public ResponseStatusDto updateBook(@RequestBody BookDto bookDto)
     {
-        long bookId = Long.parseLong(bookDto.getId());
+        long bookId = bookDto.getId();
 
         Optional<Book> bookOptional = databaseService.getBookById(bookId);
         bookOptional.ifPresent(bookDto::updateBook);
