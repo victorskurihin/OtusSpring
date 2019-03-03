@@ -1,11 +1,13 @@
 package ru.otus.homework.dao;
 
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.data.r2dbc.repository.query.Query;
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import ru.otus.homework.models.Book;
 
-public interface BookDao extends ReactiveCrudRepository<Book, Long>
+@Repository
+public interface BookDao extends R2dbcRepository<Book, Long>
 {
     /* TODO BROKEN
     @Query(

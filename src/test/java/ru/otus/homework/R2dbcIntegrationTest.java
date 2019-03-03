@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.r2dbc.function.DatabaseClient;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.test.StepVerifier;
+import ru.otus.homework.configs.ApplicationConfig;
 import ru.otus.homework.dao.AuthorDao;
 import ru.otus.homework.dao.BookDao;
 import ru.otus.homework.dao.GenreDao;
@@ -28,7 +29,7 @@ import static ru.otus.homework.configs.DBCreate.*;
 import static ru.otus.outside.TestData.*;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = Main.class)
+@SpringBootTest(classes = {Main.class, ApplicationConfig.class})
 @DisplayName("Integration tests for data layer")
 class R2dbcIntegrationTest
 {

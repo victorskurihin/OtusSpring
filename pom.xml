@@ -5,7 +5,7 @@
 
     <groupId>ru.otus</groupId>
     <artifactId>homework11</artifactId>
-    <version>11.0-1</version>
+    <version>11.0-1.1</version>
 
     <name>JavaSpring-11-2018 HomeWork-11 Maven</name>
     <url>https://otus.ru</url>
@@ -82,6 +82,11 @@
             <version>${io.projectreactor.reactor-extra.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.r2dbc/r2dbc-h2 -->
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-client</artifactId>
+            <version>1.0.0.M7</version>
+        </dependency>
         <dependency>
             <groupId>io.r2dbc</groupId>
             <artifactId>r2dbc-spi</artifactId>
