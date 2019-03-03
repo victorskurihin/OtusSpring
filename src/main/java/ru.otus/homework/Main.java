@@ -4,10 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import ru.otus.homework.configs.YamlProperties;
+import ru.otus.homework.configs.YamlApplProperties;
+import ru.otus.homework.configs.YamlSpringProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties(YamlProperties.class)
+@EnableConfigurationProperties({YamlApplProperties.class, YamlSpringProperties.class})
 public class Main
 {
     public static void main(String[] args) throws Exception {

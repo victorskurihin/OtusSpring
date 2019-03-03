@@ -1,25 +1,24 @@
 logging:
   level:
-    ROOT: INFO
+    ROOT: DEBUG
 
 spring:
   banner:
     location: classpath:banner.txt
-
   datasource:
     driver-class-name: org.h2.Driver
     initialization-mode: ALWAYS
-    url: "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"
+    url: "mem:db;DB_CLOSE_DELAY=-1"
     username: sa
     password: sa
-
   h2:
     console:
       enabled: true
-
+      path: "/h2-console"
   jpa:
     show-sql: false
     hibernate:
       ddl-auto: create
 
-locale: "ru_RU"
+application:
+  locale: "ru_RU"

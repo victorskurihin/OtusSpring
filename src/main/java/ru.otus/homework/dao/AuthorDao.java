@@ -16,7 +16,9 @@ public interface AuthorDao extends ReactiveCrudRepository<Author, Long>
 
     @Query(
         "SELECT author_id, first_name, last_name FROM author a"
-        + " WHERE a.first_name = $1 AND  a.last_name = $1"
+        + " WHERE a.first_name = $1 AND  a.last_name = $2"
     )
     Mono<Author> findByFirstNameAndLastName(String firstName, String lastName);
+
+    // TODO void deleteById(long id);
 }

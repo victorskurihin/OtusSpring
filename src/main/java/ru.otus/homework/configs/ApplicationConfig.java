@@ -11,10 +11,10 @@ import ru.otus.homework.services.*;
 @ComponentScan
 public class ApplicationConfig
 {
-    private YamlProperties yp;
+    private YamlApplProperties yp;
 
-    public ApplicationConfig(YamlProperties yamlProperties) {
-        yp = yamlProperties;
+    public ApplicationConfig(YamlApplProperties yamlApplProperties) {
+        yp = yamlApplProperties;
     }
 
     @Bean
