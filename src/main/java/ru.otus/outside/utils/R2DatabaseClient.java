@@ -13,6 +13,7 @@ public class R2DatabaseClient
 {
     public static void updateSql(DatabaseClient client, String sql)
     {
+        System.out.println("sql = " + sql);
         client.execute()
             .sql(sql)
             .fetch()

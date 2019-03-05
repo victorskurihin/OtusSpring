@@ -52,10 +52,10 @@ public interface DBCreate
 
     String[] DDL_CREATE_OPERATIONS = new String[]{
         TBL_CREATE_AUTHOR,
-        TBL_CREATE_GENRE,
-        TBL_CREATE_BOOK,
-        TBL_CREATE_AUTHOR_ISBN,
-        TBL_CREATE_BOOK_REVIEW,
+        // TBL_CREATE_GENRE,
+        // TBL_CREATE_BOOK,
+        // TBL_CREATE_AUTHOR_ISBN,
+        // TBL_CREATE_BOOK_REVIEW,
     };
 
     String[] DDL_DESTROY_OPERATIONS = new String[]{

@@ -1,14 +1,14 @@
 package ru.otus.homework.dao;
 
-import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.data.r2dbc.repository.query.Query;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import ru.otus.homework.models.Review;
 
 @Repository
-public interface ReviewDao extends R2dbcRepository<Review, Long>
+public interface ReviewDao extends ReactiveCrudRepository<Review, Long>
 
 {
     @Query("SELECT COUNT(r) FROM review r WHERE r.book.id = $1")

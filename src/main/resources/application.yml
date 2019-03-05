@@ -5,16 +5,14 @@ logging:
 spring:
   banner:
     location: classpath:banner.txt
-  data:
-    mongodb:
-      repositories:
-        enabled: false
   datasource:
     driver-class-name: org.h2.Driver
     initialization-mode: ALWAYS
-    url: "mem:db;DB_CLOSE_DELAY=-1"
+    url: "mem:db;DB_CLOSE_DELAY=-1;AUTOCOMMIT=true"
     username: sa
     password: sa
+    hikari:
+      auto-commit: true
   h2:
     console:
       enabled: true
@@ -23,7 +21,6 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: create
-
 
 application:
   locale: "ru_RU"

@@ -6,9 +6,11 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     initialization-mode: ALWAYS
-    url: "mem:db;DB_CLOSE_DELAY=-1"
+    url: "mem:db;DB_CLOSE_DELAY=-1;AUTOCOMMIT=true"
     username: sa
     password: sa
+    hikari:
+      auto-commit: true
   jpa:
     generate-ddl: false
     hibernate:
