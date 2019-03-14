@@ -16,7 +16,7 @@ spring:
   h2:
     console:
       enabled: true
-      path: "/h2-console-prod"
+      path: "/h2-console"
 
   jpa:
     generate-ddl: true
@@ -29,3 +29,6 @@ spring:
   locale: "ru_RU"
 
 locale: "ru_RU"
+
+application:
+  key: "AnyAppKey"
