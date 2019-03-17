@@ -35,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Bean
     public PasswordEncoder passwordEncoder()
     {
-        return new BCryptPasswordEncoder(yap.getStrength());
+        // return new BCryptPasswordEncoder(yap.getStrength());
+        return new BCryptPasswordEncoder();
     }
 
     @Override
