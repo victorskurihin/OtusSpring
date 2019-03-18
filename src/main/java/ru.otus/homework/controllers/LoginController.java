@@ -5,9 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static ru.otus.homework.controllers.Constants.MODEL_LOGIN_ERROR;
-import static ru.otus.homework.controllers.Constants.REQUEST_LOGIN;
-import static ru.otus.homework.controllers.Constants.VIEW_LOGIN;
+import static ru.otus.homework.controllers.Constants.*;
 
 @Controller
 public class LoginController

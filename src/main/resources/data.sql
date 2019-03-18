@@ -44,4 +44,4 @@ VALUES (11, 'Review for Advanced Java 2 Platform How to Program', 1),
        (32, 'The Complete Perl Training Course review 2', 3),
        (33, 'The Complete Perl Training Course review 3', 3);
 
-INSERT INTO user(login, password, expired, locked) VALUES('user', '$2a$12$CRpVEY4yzWZJ7sIeoK8QQO175pLFcgVoxBM.FEAh8mF5YQtO8GOJO', FALSE, FALSE);
+INSERT INTO user(login, password, expired, locked) VALUES('user', '$2a$04$P/N8NJCLU6akKgYqI3TGsekyle.1wjkBEddhhlLIN9Sk73uUigT72', FALSE, FALSE);

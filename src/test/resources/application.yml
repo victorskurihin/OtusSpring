@@ -17,4 +17,4 @@ spring:
 application:
   rememberKey: "RememberMeApplicationKey"
   locale: "ru_RU"
-  strength: 12
+  strength: 4

@@ -19,7 +19,7 @@ public class UserProfileDetails implements UserDetails
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities()
     {
-        return Collections.singletonList((GrantedAuthority) () -> "USERS");
+        return Collections.singletonList((GrantedAuthority) () -> "ROLE_USERS");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class UserProfileDetails implements UserDetails
     @Override
     public String getUsername()
     {
-        return  userProfile.getLogin();
+        return userProfile.getLogin();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class UserProfileDetails implements UserDetails
     @Override
     public boolean isAccountNonLocked()
     {
-        return ! userProfile.isLocked() ;
+        return ! userProfile.isLocked();
     }
 
     @Override

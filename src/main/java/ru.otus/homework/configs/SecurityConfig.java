@@ -1,7 +1,6 @@
 package ru.otus.homework.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,10 +10,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.otus.homework.services.security.UserProfileDetailsService;
+import ru.otus.homework.configs.YamlApplicationProperties;
+import ru.otus.homework.security.UserProfileDetailsService;
 
-import static ru.otus.homework.controllers.Constants.REQUEST_LOGIN;
-import static ru.otus.homework.controllers.Constants.REQUEST_LOGIN_PROCESS;
+import static ru.otus.homework.controllers.Constants.*;
 import static ru.otus.homework.security.Constants.*;
 
 @Configuration
@@ -26,17 +25,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     private final YamlApplicationProperties yap;
 
     @Autowired
-    public SecurityConfig(UserProfileDetailsService profileService, YamlApplicationProperties yaProperties)
+    public SecurityConfig(UserProfileDetailsService userDetailsService, YamlApplicationProperties yap)
     {
-        userDetailsService = profileService;
-        this.yap= yaProperties;
+        this.userDetailsService = userDetailsService;
+        this.yap = yap;
     }
 
     @Bean
     public PasswordEncoder passwordEncoder()
     {
-        // return new BCryptPasswordEncoder(yap.getStrength());
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(yap.getStrength());
     }
 
     @Override
@@ -57,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
             .usernameParameter(PARAMETER_USERNAME)
             .passwordParameter(PARAMETER_PASSWORD)
             .defaultSuccessUrl("/", true)
-            .failureUrl(FAILURE_URL)
+            .failureUrl(URL_FAILURE)
             .and()
             .rememberMe()
             .key(yap.getRememberKey())

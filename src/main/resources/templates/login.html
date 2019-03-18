@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset=UTF-8>
     <title id="head-title">JavaSpring-11-2018 welcome</title>
@@ -12,19 +13,21 @@
         var reviewsURL = /*[[${reviews}]]*/ 'reviews';
     </script>
 </head>
-<body class="body">
 
-<main class="auto-center">
-    <h2 th:if = "${loginError}">Ошибка входа, попробуйте ещё раз</h2>
-    <h2 th:unless = "${loginError}">Вход</h2>
-        <form action="login-process" method="POST">
+<body>
+<main>
+    <h2>Вход</h2>
+        <form action="login_processing" method="POST">
             <div>
-                <label for="readerLogin">Имя пользователя</label>
-                <input type="text" name="jUserLogin" id="readerLogin" placeholder="Имя пользователя" required value="user"><br/>
+                <label for="readerLogin">Название книги</label>
+                <input type="text" name="libUserLogin" id="readerLogin" placeholder="Имя входа" required value="AnyUser"><br/>
             </div>
             <div>
                 <label for="readerPassword">Пароль</label>
-                <input type="password" name="jUserPassword" id="readerPassword" placeholder="Пароль" required value="123456"><br/>
+                <input type="password" name="libUserPassword" id="readerPassword" placeholder="Пароль" required value="12345"><br/>
+            </div>
+            <div>
+                <div th:if = "${param.error}" class="login-error-msg">Ошибка входа</div>
             </div>
             <input type="submit" value="Войти">
         </form>

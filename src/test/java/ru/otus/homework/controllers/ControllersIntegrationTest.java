@@ -7,12 +7,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import ru.otus.homework.configs.ApplicationConfig;
+import ru.otus.homework.configs.YamlApplicationProperties;
 import ru.otus.homework.dao.UserProfileDao;
 import ru.otus.homework.models.Author;
 import ru.otus.homework.models.Book;
@@ -22,7 +28,7 @@ import ru.otus.homework.models.dto.AuthorBookIdDto;
 import ru.otus.homework.models.dto.BookDto;
 import ru.otus.homework.models.dto.ReviewDto;
 import ru.otus.homework.services.DatabaseService;
-import ru.otus.homework.services.security.UserProfileDetailsService;
+import ru.otus.homework.security.UserProfileDetailsService;
 
 import javax.servlet.Filter;
 
@@ -43,7 +49,8 @@ import static ru.otus.outside.utils.TestUtil.convertObjectToJsonBytes;
 @WebMvcTest({
     AuthorsController.class, AuthorsRestController.class,
     BooksController.class, BooksRestController.class,
-    ReviewsController.class, ReviewsRestController.class
+    ReviewsController.class, ReviewsRestController.class,
+    LoginController.class
 })
 @DisplayName("Integration tests for controllers")
 public class ControllersIntegrationTest
@@ -51,8 +58,6 @@ public class ControllersIntegrationTest
     public static final String TEST_USER = "user";
 
     public static final String TEST_USER_PASSWORD_PLAIN = "123456";
-
-    public static final String TEST_USER_PASSWORD = "$2a$12$CRpVEY4yzWZJ7sIeoK8QQO175pLFcgVoxBM.FEAh8mF5YQtO8GOJO";
 
     @Autowired
     private WebApplicationContext context;
@@ -68,8 +73,21 @@ public class ControllersIntegrationTest
     @MockBean
     private DatabaseService databaseService;
 
+    @Autowired
+    ApplicationConfig applicationConfig;
+
+    @Autowired
+    YamlApplicationProperties yamlApplicationProperties;
+
     @MockBean
     UserProfileDao userProfileDao;
+
+    private String userPasswordEncoded()
+    {
+        int strength = yamlApplicationProperties.getStrength();
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(strength);
+        return passwordEncoder.encode(TEST_USER_PASSWORD_PLAIN);
+    }
 
     void mockMvcAndUserProfileDao()
     {
@@ -78,7 +96,7 @@ public class ControllersIntegrationTest
             .apply(springSecurity())
             .build();
         when(userProfileDao.findByLogin(TEST_USER))
-            .thenReturn(Optional.of(new UserProfile(1, TEST_USER, TEST_USER_PASSWORD, false, false)));
+            .thenReturn(Optional.of(new UserProfile(1L, TEST_USER, userPasswordEncoded(), false, false)));
     }
 
     @Nested
@@ -462,3 +480,9 @@ public class ControllersIntegrationTest
         }
     }
 }
+
+/*
+
+Error creating bean with name 'applicationConfig' defined in file ApplicationConfig.class
+
+ */

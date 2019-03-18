@@ -2,26 +2,20 @@ package ru.otus.homework.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Entity
 @Table(name = "user")
-public class UserProfile implements Serializable, DataSet
+public class UserProfile
 {
-    static final long serialVersionUID = -5L;
-
     @Id
-    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String login;
