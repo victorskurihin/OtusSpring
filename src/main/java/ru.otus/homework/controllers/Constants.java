@@ -34,9 +34,6 @@ public class Constants
     public static final String REQUEST_REVIEW_EDIT = "/review-edit";
 
     public static final String VIEW_LOGIN = "login.html";
-    public static final String VIEW_NAME_LOGIN = "login.html";
-
     public static final String REQUEST_LOGIN = "/login";
-    public static final String REQUEST_LOGIN_PROCESS = "/login-process";
-    public static final String REQUEST_LOGIN_PROCESSING = "/login_processing";
+    public static final String REQUEST_LOGIN_PROCESS = "/login-processing";
 }
