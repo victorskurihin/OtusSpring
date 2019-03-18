@@ -1,4 +1,4 @@
-package ru.otus.homework.security;
+package ru.otus.homework.acl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

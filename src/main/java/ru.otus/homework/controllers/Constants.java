@@ -35,5 +35,5 @@ public class Constants
 
     public static final String VIEW_LOGIN = "login.html";
     public static final String REQUEST_LOGIN = "/login";
-    public static final String REQUEST_LOGIN_PROCESS = "/login-processing";
+    public static final String REQUEST_LOGIN_PROCESS = "/login-process";
 }

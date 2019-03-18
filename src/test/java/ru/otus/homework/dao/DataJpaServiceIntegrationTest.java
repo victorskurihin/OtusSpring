@@ -1,26 +1,39 @@
-package ru.otus.homework.services;
+package ru.otus.homework.dao;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.otus.homework.Main;
+import ru.otus.homework.dao.TestDaoSpringBootApplication;
 import ru.otus.homework.models.Author;
 import ru.otus.homework.models.Book;
 import ru.otus.homework.models.Genre;
 import ru.otus.homework.models.Review;
+import ru.otus.homework.services.DatabaseService;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static ru.otus.outside.utils.TestData.*;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = Main.class)
+// @SpringBootTest(classes = Main.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2, replace = AutoConfigureTestDatabase.Replace.NONE)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @DisplayName("Integration tests for data layer with class DataJpaService")
 class DataJpaServiceIntegrationTest
 {

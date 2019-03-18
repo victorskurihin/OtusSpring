@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
         http.csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .authorizeRequests().antMatchers("/css/*", "/img/*").permitAll()
+            .authorizeRequests().antMatchers("/css/*", "/img/*", "/h2-console/**").permitAll()
             .and()
             .authorizeRequests().antMatchers(REQUEST_LOGIN, REQUEST_LOGIN_PROCESS).anonymous()
             .and()
