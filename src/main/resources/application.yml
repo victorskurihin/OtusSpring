@@ -5,6 +5,7 @@ logging:
 spring:
   banner:
     location: classpath:banner.txt
+<<<<<<< HEAD
   data:
     mongodb:
       repositories:
@@ -15,10 +16,21 @@ spring:
     url: "mem:db;DB_CLOSE_DELAY=-1"
     username: sa
     password: sa
+=======
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    initialization-mode: ALWAYS
+    url: "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"
+    username: sa
+    password: sa
+
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253
   h2:
     console:
       enabled: true
       path: "/h2-console"
+<<<<<<< HEAD
   jpa:
     show-sql: false
     hibernate:
@@ -27,3 +39,18 @@ spring:
 
 application:
   locale: "ru_RU"
+=======
+
+  jpa:
+    generate-ddl: true
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      hbm2ddl:
+        auto: create
+
+application:
+  rememberKey: "RememberMeApplicationKey"
+  locale: "ru_RU"
+  strength: 12
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253

@@ -3,9 +3,14 @@ package ru.otus.homework.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+<<<<<<< HEAD
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+=======
+
+import javax.persistence.*;
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,12 +18,17 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+<<<<<<< HEAD
 @Table("book")
+=======
+@Entity
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253
 public class Book implements Serializable, DataSet
 {
     static final long serialVersionUID = -2L;
 
     @Id
+<<<<<<< HEAD
     private long id;
 
     private String isbn;
@@ -31,6 +41,36 @@ public class Book implements Serializable, DataSet
 
     private List<Author> authors = new LinkedList<>();
 
+=======
+    @Column(name = "book_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(unique = true)
+    private String isbn;
+
+    @Column
+    private String title;
+
+    @Column(name = "edition_number")
+    private int editionNumber;
+
+    @Column
+    private String copyright;
+
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+        name = "author_isbn",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private List<Author> authors = new LinkedList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = {
+        CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+    })
+    @JoinColumn(name = "genre_id", nullable = false)
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253
     private Genre genre;
 
     @Override

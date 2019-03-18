@@ -43,3 +43,8 @@ VALUES (11, 'Review for Advanced Java 2 Platform How to Program', 1),
        (31, 'The Complete Perl Training Course review 1', 3),
        (32, 'The Complete Perl Training Course review 2', 3),
        (33, 'The Complete Perl Training Course review 3', 3);
+<<<<<<< HEAD
+=======
+
+INSERT INTO user(login, password, expired, locked) VALUES('user', '$2a$12$CRpVEY4yzWZJ7sIeoK8QQO175pLFcgVoxBM.FEAh8mF5YQtO8GOJO', FALSE, FALSE);
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253

@@ -9,7 +9,11 @@ import java.util.Collections;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+<<<<<<< HEAD
 import static ru.otus.outside.TestData.*;
+=======
+import static ru.otus.outside.utils.TestData.*;
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253
 
 @DisplayName("Class Book")
 class BookTest
