@@ -1,0 +1,34 @@
+spring:
+  h2:
+    console:
+      enabled: true
+<<<<<<< HEAD
+      path: "/h2-console"
+  datasource:
+    driver-class-name: org.h2.Driver
+    initialization-mode: ALWAYS
+    url: "mem:db;DB_CLOSE_DELAY=-1"
+    username: sa
+    password: sa
+=======
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+
+application:
+<<<<<<< HEAD
+  locale: "ru_RU"
+=======
+  rememberKey: "RememberMeApplicationKey"
+  locale: "ru_RU"
+  strength: 12
+>>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253

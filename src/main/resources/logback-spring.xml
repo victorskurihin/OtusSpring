@@ -35,11 +35,7 @@
     <!-- LOG everything at INFO level -->
     <root level="debug">
         <appender-ref ref="RollingFile" />
-<<<<<<< HEAD
-        <!-- appender-ref ref="Console" / -->
-=======
         <appender-ref ref="Console" />
->>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253
     </root>
 
     <!-- LOG "com.baeldung*" at TRACE level -->

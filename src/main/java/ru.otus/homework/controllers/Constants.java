@@ -21,7 +21,6 @@ public class Constants
     public static final String VIEW_BOOK_AUTHORS_LIST = "book-authors-list.html";
     public static final String VIEW_BOOK_AUTHOR_EDIT = "book-author-edit.html";
     public static final String VIEW_BOOK_EDIT = "book-edit.html";
-    public static final String VIEW_LOGIN = "login.html";
     public static final String VIEW_REVIEWS_LIST = "reviews-list.html";
     public static final String VIEW_REVIEW_EDIT = "review-edit.html";
 
@@ -30,9 +29,14 @@ public class Constants
     public static final String REQUEST_BOOK_AUTHORS_LIST = "/book-authors-list";
     public static final String REQUEST_BOOK_CREATE = "/book-create";
     public static final String REQUEST_BOOK_EDIT = "/book-edit";
-    public static final String REQUEST_LOGIN = "/login";
-    public static final String REQUEST_LOGIN_PROCESS = "/login-process";
     public static final String REQUEST_REVIEWS_LIST = "/reviews-list";
     public static final String REQUEST_REVIEW_CREATE = "/review-create";
     public static final String REQUEST_REVIEW_EDIT = "/review-edit";
+
+    public static final String VIEW_LOGIN = "login.html";
+    public static final String VIEW_NAME_LOGIN = "login.html";
+
+    public static final String REQUEST_LOGIN = "/login";
+    public static final String REQUEST_LOGIN_PROCESS = "/login-process";
+    public static final String REQUEST_LOGIN_PROCESSING = "/login_processing";
 }

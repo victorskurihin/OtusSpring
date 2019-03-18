@@ -9,10 +9,7 @@ CREATE TABLE IF NOT EXISTS author (
 CREATE TABLE IF NOT EXISTS genre (
   genre_id BIGINT      NOT NULL AUTO_INCREMENT,
   value    VARCHAR(90) NOT NULL,
-<<<<<<< HEAD
-=======
   UNIQUE (value),
->>>>>>> 9eec745064b242dd0bf3b4f8d74f206e073df253
   PRIMARY KEY (genre_id)
 );
 
