@@ -5,7 +5,7 @@
 
     <groupId>ru.otus</groupId>
     <artifactId>homework13</artifactId>
-    <version>13.0-2</version>
+    <version>13.0-3</version>
 
     <name>JavaSpring-11-2018 HomeWork-13 Maven</name>
     <url>https://otus.ru</url>
@@ -26,6 +26,8 @@
         <org.mockito.version>2.23.4</org.mockito.version>
         <org.springframework.boot.version>2.1.1.RELEASE</org.springframework.boot.version>
         <org.webjars.jquery.version>3.3.1</org.webjars.jquery.version>
+        <ehcache-core.version>2.6.11</ehcache-core.version>
+        <swagger.version>2.8.0</swagger.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -77,6 +79,22 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+
+        <!-- Spring Security ACL и зависимости-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-acl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>${ehcache-core.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
         </dependency>
 
         <dependency>
