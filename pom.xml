@@ -6,7 +6,7 @@
 
     <groupId>ru.otus</groupId>
     <artifactId>homework14</artifactId>
-    <version>14.0-0</version>
+    <version>14.0-1</version>
 
     <name>JavaSpring-11-2018 HomeWork-14 Maven</name>
     <url>https://otus.ru</url>
@@ -46,6 +46,10 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
