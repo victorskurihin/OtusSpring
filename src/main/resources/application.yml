@@ -1,6 +1,9 @@
 logging:
   level:
-    ROOT: DEBUG
+    ROOT: INFO
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n'
+  file: 'logs/books_app_log.log'
 
 spring:
   banner:
@@ -30,3 +33,12 @@ application:
   rememberKey: "RememberMeApplicationKey"
   locale: "ru_RU"
   strength: 12
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - metrics
+          - health
+          - logfile
