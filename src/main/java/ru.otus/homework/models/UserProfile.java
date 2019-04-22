@@ -13,13 +13,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "user")
+@Table(name = "user_profile")
 public class UserProfile implements Serializable, DataSet
 {
     static final long serialVersionUID = -5L;
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 

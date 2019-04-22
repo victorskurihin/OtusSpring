@@ -1,25 +1,16 @@
 logging:
   level:
     ROOT: INFO
-  pattern:
-    file: '%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n'
-  file: 'logs/books_app_log.log'
 
 spring:
   banner:
     location: classpath:banner.txt
 
   datasource:
-    driver-class-name: org.h2.Driver
-    initialization-mode: ALWAYS
-    url: "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"
-    username: sa
-    password: sa
-
-  h2:
-    console:
-      enabled: true
-      path: "/h2-console"
+    platform: postgres
+    url: jdbc:postgresql://postgresql:5432/db
+    username: dbuser
+    password: password
 
   jpa:
     generate-ddl: true
@@ -32,13 +23,4 @@ spring:
 application:
   rememberKey: "RememberMeApplicationKey"
   locale: "ru_RU"
-  strength: 12
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - metrics
-          - health
-          - logfile
+  strength: 4

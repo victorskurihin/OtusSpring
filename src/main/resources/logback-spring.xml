@@ -35,13 +35,13 @@
     <!-- LOG everything at INFO level -->
     <root level="debug">
         <appender-ref ref="RollingFile" />
-        <appender-ref ref="Console" />
+        <!-- appender-ref ref="Console" / -->
     </root>
 
     <!-- LOG "com.baeldung*" at TRACE level -->
     <logger name="ru.otus" level="trace" additivity="false">
         <appender-ref ref="RollingFile" />
-        <!--<appender-ref ref="Console" />-->
+        <!-- appender-ref ref="Console" / -->
     </logger>
 
 </configuration>
