@@ -11,6 +11,13 @@
     min-width: 1024px;
     width: 90%
 }
+<<<<<<< HEAD
+=======
+.auto-center {
+	margin-left: auto;
+	margin-right: auto
+}
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
 
 .tg0 {
     border-collapse: collapse;

@@ -15,11 +15,19 @@ public class Constants
     public static final String MODEL_BOOK_ID = "bookId";
     public static final String MODEL_REVIEW = "review";
     public static final String MODEL_REVIEWS = "reviews";
+<<<<<<< HEAD
+=======
+    public static final String MODEL_LOGIN_ERROR = "loginError";
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
 
     public static final String VIEW_BOOKS_LIST = "books-list.html";
     public static final String VIEW_BOOK_AUTHORS_LIST = "book-authors-list.html";
     public static final String VIEW_BOOK_AUTHOR_EDIT = "book-author-edit.html";
     public static final String VIEW_BOOK_EDIT = "book-edit.html";
+<<<<<<< HEAD
+=======
+    public static final String VIEW_LOGIN = "login.html";
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
     public static final String VIEW_REVIEWS_LIST = "reviews-list.html";
     public static final String VIEW_REVIEW_EDIT = "review-edit.html";
 
@@ -28,6 +36,11 @@ public class Constants
     public static final String REQUEST_BOOK_AUTHORS_LIST = "/book-authors-list";
     public static final String REQUEST_BOOK_CREATE = "/book-create";
     public static final String REQUEST_BOOK_EDIT = "/book-edit";
+<<<<<<< HEAD
+=======
+    public static final String REQUEST_LOGIN = "/login";
+    public static final String REQUEST_LOGIN_PROCESS = "/login-process";
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
     public static final String REQUEST_REVIEWS_LIST = "/reviews-list";
     public static final String REQUEST_REVIEW_CREATE = "/review-create";
     public static final String REQUEST_REVIEW_EDIT = "/review-edit";

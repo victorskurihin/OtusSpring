@@ -4,16 +4,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.otus</groupId>
+<<<<<<< HEAD
     <artifactId>homework10</artifactId>
     <version>10.0-9</version>
 
     <name>JavaSpring-11-2018 HomeWork-10 Maven</name>
+=======
+    <artifactId>homework17</artifactId>
+    <version>17.0-SNAPSHOT</version>
+
+    <name>JavaSpring-11-2018 HomeWork-17 Maven</name>
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
     <url>https://otus.ru</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <com.h2database.h2.version>1.4.197</com.h2database.h2.version>
+<<<<<<< HEAD
+=======
+        <ehcache-core.version>2.6.11</ehcache-core.version>
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
         <javax.inject.version>1</javax.inject.version>
         <json-path.version>2.4.0</json-path.version>
         <junit.platform.version>1.3.1</junit.platform.version>
@@ -26,6 +37,10 @@
         <org.mockito.version>2.23.4</org.mockito.version>
         <org.springframework.boot.version>2.1.1.RELEASE</org.springframework.boot.version>
         <org.webjars.jquery.version>3.3.1</org.webjars.jquery.version>
+<<<<<<< HEAD
+=======
+        <swagger.version>2.8.0</swagger.version>
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -42,6 +57,14 @@
 
     <dependencies>
         <dependency>
+<<<<<<< HEAD
+=======
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
@@ -57,6 +80,14 @@
         </dependency>
 
         <dependency>
+<<<<<<< HEAD
+=======
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>${org.webjars.jquery.version}</version>
@@ -74,6 +105,25 @@
             <version>${lombok.version}</version>
         </dependency>
 
+<<<<<<< HEAD
+=======
+        <!-- Spring Security ACL и зависимости-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-acl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>${ehcache-core.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -82,9 +132,22 @@
         </dependency>
 
         <dependency>
+<<<<<<< HEAD
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${com.h2database.h2.version}</version>
+=======
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${com.h2database.h2.version}</version>
+            <scope>runtime</scope>
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
             <!--<scope>test</scope>-->
         </dependency>
 
@@ -149,4 +212,8 @@
             </plugin>
         </plugins>
     </build>
+<<<<<<< HEAD
 </project>
+=======
+</project>
+>>>>>>> 3c01fc04fe97660798e73fdae8736623943ae16e
