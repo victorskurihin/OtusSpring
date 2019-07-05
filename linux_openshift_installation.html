@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://wiki.imb.ru/linux:openshift:installation -->
+<html lang="en" dir="ltr" class="js desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>linux:openshift:installation [AIX Support]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki">
+<meta name="robots" content="noindex,nofollow">
+<meta name="keywords" content="linux,openshift,installation">
+<link rel="search" type="application/opensearchdescription+xml" href="https://wiki.imb.ru/lib/exe/opensearch.php" title="AIX Support">
+<link rel="start" href="https://wiki.imb.ru/">
+<link rel="contents" href="https://wiki.imb.ru/linux:openshift:installation?do=index" title="Sitemap">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://wiki.imb.ru/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="https://wiki.imb.ru/feed.php?mode=list&amp;ns=linux:openshift">
+<link rel="edit" title="Edit this page" href="https://wiki.imb.ru/linux:openshift:installation?do=edit">
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://wiki.imb.ru/_export/xhtml/linux:openshift:installation">
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="https://wiki.imb.ru/_export/raw/linux:openshift:installation">
+<link rel="canonical" href="https://wiki.imb.ru/linux:openshift:installation">
+<link rel="stylesheet" type="text/css" href="./linux_openshift_installation_files/css.php">
+<link rel="stylesheet" type="text/css" href="./linux_openshift_installation_files/theme-default.css">
+<link rel="stylesheet" type="text/css" href="./linux_openshift_installation_files/override.css">
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='linux:openshift';var SIG=' --- //[[Viktor.Skurikhin@unicredit.ru|Viktor N. Skurikhin]] 2019/07/05 11:25//';var JSINFO = {"id":"linux:openshift:installation","namespace":"linux:openshift"};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./linux_openshift_installation_files/jquery.php"></script>
+<script type="text/javascript" charset="utf-8" src="./linux_openshift_installation_files/js.php"></script><style id="iris-css">.iris-picker{display:block;position:relative}.iris-picker,.iris-picker *{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input+.iris-picker{margin-top:4px}.iris-error{background-color:#ffafaf}.iris-border{border-radius:3px;border:1px solid #aaa;width:200px;background-color:#fff}.iris-picker-inner{position:absolute;top:0;right:0;left:0;bottom:0}.iris-border .iris-picker-inner{top:10px;right:10px;left:10px;bottom:10px}.iris-picker .iris-square-inner{position:absolute;left:0;right:0;top:0;bottom:0}.iris-picker .iris-square,.iris-picker .iris-slider,.iris-picker .iris-square-inner,.iris-picker .iris-palette{border-radius:3px;box-shadow:inset 0 0 5px rgba(0,0,0,.4);height:100%;width:12.5%;float:left;margin-right:5%}.iris-picker .iris-square{width:76%;margin-right:10%;position:relative}.iris-picker .iris-square-inner{width:auto;margin:0}.iris-ie-9 .iris-square,.iris-ie-9 .iris-slider,.iris-ie-9 .iris-square-inner,.iris-ie-9 .iris-palette{box-shadow:none;border-radius:0}.iris-ie-9 .iris-square,.iris-ie-9 .iris-slider,.iris-ie-9 .iris-palette{outline:1px solid rgba(0,0,0,.1)}.iris-ie-lt9 .iris-square,.iris-ie-lt9 .iris-slider,.iris-ie-lt9 .iris-square-inner,.iris-ie-lt9 .iris-palette{outline:1px solid #aaa}.iris-ie-lt9 .iris-square .ui-slider-handle{outline:1px solid #aaa;background-color:#fff;-ms-filter:"alpha(Opacity=30)"}.iris-ie-lt9 .iris-square .iris-square-handle{background:0;border:3px solid #fff;-ms-filter:"alpha(Opacity=50)"}.iris-picker .iris-strip{margin-right:0;position:relative}.iris-picker .iris-strip .ui-slider-handle{position:absolute;background:0;margin:0;right:-3px;left:-3px;border:4px solid #aaa;border-width:4px 3px;width:auto;height:6px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.2);opacity:.9;z-index:5;cursor:ns-resize}.iris-strip .ui-slider-handle:before{content:" ";position:absolute;left:-2px;right:-2px;top:-3px;bottom:-3px;border:2px solid #fff;border-radius:3px}.iris-picker .iris-slider-offset{position:absolute;top:11px;left:0;right:0;bottom:-3px;width:auto;height:auto;background:transparent;border:0;border-radius:0}.iris-picker .iris-square-handle{background:transparent;border:5px solid #aaa;border-radius:50%;border-color:rgba(128,128,128,.5);box-shadow:none;width:12px;height:12px;position:absolute;left:-10px;top:-10px;cursor:move;opacity:1;z-index:10}.iris-picker .ui-state-focus .iris-square-handle{opacity:.8}.iris-picker .iris-square-handle:hover{border-color:#999}.iris-picker .iris-square-value:focus .iris-square-handle{box-shadow:0 0 2px rgba(0,0,0,.75);opacity:.8}.iris-picker .iris-square-handle:hover::after{border-color:#fff}.iris-picker .iris-square-handle::after{position:absolute;bottom:-4px;right:-4px;left:-4px;top:-4px;border:3px solid #f9f9f9;border-color:rgba(255,255,255,.8);border-radius:50%;content:" "}.iris-picker .iris-square-value{width:8px;height:8px;position:absolute}.iris-ie-lt9 .iris-square-value,.iris-mozilla .iris-square-value{width:1px;height:1px}.iris-palette-container{position:absolute;bottom:0;left:0;margin:0;padding:0}.iris-border .iris-palette-container{left:10px;bottom:10px}.iris-picker .iris-palette{margin:0;cursor:pointer}.iris-square-handle,.ui-slider-handle{border:0;outline:0}</style>
+<script type="text/javascript" src="./linux_openshift_installation_files/syntaxhighlighter.js.download"></script>
+<!--<![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" href="https://wiki.imb.ru/lib/tpl/dokuwiki/images/favicon.ico">
+<link rel="apple-touch-icon" href="https://wiki.imb.ru/lib/tpl/dokuwiki/images/apple-touch-icon.png">
+    </head>
+
+<body>
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_dokuwiki loggedIn    ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header"><div class="pad group">
+
+    
+    <div class="headings group">
+        <ul class="a11y skip">
+            <li><a href="https://wiki.imb.ru/linux:openshift:installation#dokuwiki__content">skip to content</a></li>
+        </ul>
+
+        <h1><a href="https://wiki.imb.ru/start" accesskey="h" title="[H]"><img src="./linux_openshift_installation_files/logo.png" width="64" height="64" alt=""> <span>AIX Support</span></a></h1>
+            </div>
+
+    <div class="tools group">
+        <!-- USER TOOLS -->
+                    <div id="dokuwiki__usertools">
+                <h3 class="a11y">User Tools</h3>
+                <ul>
+                    <li class="user">Logged in as: <bdi>Viktor N. Skurikhin</bdi> (<bdi>mb24681</bdi>)</li><li><a href="https://wiki.imb.ru/linux:openshift:installation?do=admin" class="action admin" rel="nofollow" title="Admin">Admin</a></li><li><a href="https://wiki.imb.ru/linux:openshift:installation?do=profile" class="action profile" rel="nofollow" title="Update Profile">Update Profile</a></li><li><a href="https://wiki.imb.ru/linux:openshift:installation?do=logout&amp;sectok=f0d62ccb9268f70a0406a768da58ba7f" class="action logout" rel="nofollow" title="Log Out">Log Out</a></li>                </ul>
+            </div>
+        
+        <!-- SITE TOOLS -->
+        <div id="dokuwiki__sitetools">
+            <h3 class="a11y">Site Tools</h3>
+            <form action="https://wiki.imb.ru/start" accept-charset="utf-8" class="search" id="dw__search" method="get" role="search"><div class="no"><input type="hidden" name="do" value="search"><input type="text" placeholder="Search" id="qsearch__in" accesskey="f" name="id" class="edit" title="[F]"><button type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup" style="display: none;"></div></div></form>            <div class="mobileTools">
+                <form action="https://wiki.imb.ru/doku.php" method="get" accept-charset="utf-8"><div class="no"><input type="hidden" name="id" value="linux:openshift:installation"><input type="hidden" name="sectok" value="f0d62ccb9268f70a0406a768da58ba7f"><select name="do" class="edit quickselect" title="Tools"><option value="">Tools</option><optgroup label="Page Tools"><option value="edit">Edit this page</option><option value="revisions">Old revisions</option><option value="backlink">Backlinks</option></optgroup><optgroup label="Site Tools"><option value="recent">Recent Changes</option><option value="media">Media Manager</option><option value="index">Sitemap</option></optgroup><optgroup label="User Tools"><option value="logout">Log Out</option><option value="profile">Update Profile</option><option value="admin">Admin</option></optgroup></select><button type="submit" style="display: none;">&gt;</button></div></form>            </div>
+            <ul>
+                <li><a href="https://wiki.imb.ru/linux:openshift:installation?do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent Changes [R]">Recent Changes</a></li><li><a href="https://wiki.imb.ru/linux:openshift:installation?do=media&amp;ns=linux%3Aopenshift" class="action media" rel="nofollow" title="Media Manager">Media Manager</a></li><li><a href="https://wiki.imb.ru/linux:openshift:installation?do=index" class="action index" accesskey="x" rel="nofollow" title="Sitemap [X]">Sitemap</a></li>            </ul>
+        </div>
+
+    </div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                                        <div class="trace"><span class="bchead">Trace:</span> <span class="bcsep">•</span> <bdi><a href="https://wiki.imb.ru/start" class="breadcrumbs" title="start">start</a></bdi> <span class="bcsep">•</span> <bdi><a href="https://wiki.imb.ru/linux" class="breadcrumbs" title="linux">linux</a></bdi> <span class="bcsep">•</span> <span class="curid"><bdi><a href="https://wiki.imb.ru/linux:openshift:installation" class="breadcrumbs" title="linux:openshift:installation">installation</a></bdi></span></div>
+                    </div>
+    
+
+
+    <hr class="a11y">
+</div></div><!-- /header -->
+
+        <div class="wrapper group">
+
+            
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <div class="pageId"><span>linux:openshift:installation</span></div>
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc">
+<h3 class="toggle open" style="cursor: pointer;"><strong><span>−</span></strong>Table of Contents</h3>
+<div aria-expanded="true" style="">
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#openshift_installation">OpenShift installation</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D1%81%D1%82%D0%B5%D0%BD%D0%B4">Тестовый стенд</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BF%D0%BE%D1%81%D0%BB%D0%B5_%D0%B8%D0%BD%D1%81%D1%82%D0%B0%D0%BB%D1%8F%D1%86%D0%B8%D0%B8">Обновление после инсталяции</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D1%8F%D0%B5%D0%BC_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F_%D0%B4%D0%BB%D1%8F_ansible">Добавляем пользователя для ansible</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#ssh-%D0%BA%D0%BB%D1%8E%D1%87_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F_%D0%B4%D0%BB%D1%8F_ansible">SSH-ключ пользователя для ansible</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%B8%D1%82%D1%8C_resolvconf">Проверить resolv.conf</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#docker_registry_ssl">Docker registry SSL</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BF%D1%8B%D0%B5_%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%B8">Необходипые репозитории</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BF%D1%8B%D0%B5_%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D1%8B">Необходипые пакеты</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C_%D0%B8_%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D1%82%D0%B8%D1%82%D1%8C_networkmanager">Активировать и запустить NetworkManager</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#rpcbind_%D0%B8_software-definetd_%D1%81%D0%B5%D1%82%D1%8C">RPCBind и SoftWare-Definetd сеть</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#lvm_thin_pool_in_a_user_specified_volume_group">LVM thin pool in a user specified volume group</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0">Установка</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#restart_master_services">Restart master services</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#imagepolicyconfig">imagePolicyConfig</a></div></li>
+<li class="level2"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#import_images_from_external_registries">IMPORT IMAGES FROM EXTERNAL REGISTRIES</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#attach_the_secret_to_the_docker-registry">Attach the secret to the docker-registry:</a></div></li>
+<li class="level3"><div class="li"><a href="https://wiki.imb.ru/linux:openshift:installation#%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA">Черновик</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+
+<h1 class="sectionedit1" id="openshift_installation">OpenShift installation</h1><div class="level1">
+
+</div>
+<div class="secedit editbutton_section editbutton_1"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[OpenShift installation] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="1-38"><button type="submit" title="OpenShift installation">Edit</button></div></form></div>
+<h2 class="sectionedit2" id="тестовый_стенд">Тестовый стенд</h2>
+<div class="level2">
+<div class="table sectionedit3"><table class="inline">
+	<tbody><tr class="row0">
+		<td class="col0"> vs013 </td><td class="col1"> master, infra </td>
+	</tr>
+	<tr class="row1">
+		<td class="col0"> vs014 </td><td class="col1"> compute, infra </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> vs015 </td><td class="col1"> compute </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> vs1755 </td><td class="col1"> ansible </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"> vs1756 </td><td class="col1"> docker registry </td>
+	</tr>
+</tbody></table></div>
+
+</div>
+<div class="secedit editbutton_section editbutton_2"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Тестовый стенд] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="39-203"><button type="submit" title="Тестовый стенд">Edit</button></div></form></div>
+<h2 class="sectionedit4" id="обновление_после_инсталяции">Обновление после инсталяции</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum update -y</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">shutdown -r now</span>
+</pre><pre class="cli"><span class="cli_prompt">[root@vs014 ~]# </span><span class="cli_command">yum update -y</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">shutdown -r now</span>
+</pre><pre class="cli"><span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">yum update -y</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">shutdown -r now</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_4"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Обновление после инсталяции] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="204-531"><button type="submit" title="Обновление после инсталяции">Edit</button></div></form></div>
+<h2 class="sectionedit5" id="добавляем_пользователя_для_ansible">Добавляем пользователя для ansible</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs1755 ~]# </span><span class="cli_command">groupadd -g 1110 tstansible</span>
+<span class="cli_prompt">[root@vs1755 ~]# </span><span class="cli_command">useradd -g 1110 -u 1110 -c "CHG000654740" -s /bin/bash tstansible</span>
+</pre><pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">groupadd -g 1110 tstansible</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">useradd -g 1110 -u 1110 -c "CHG000654740" -s /bin/bash tstansible</span>
+</pre><pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat &gt;&gt; /etc/sudoers &lt;&lt; EOF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">tstansible      ALL=(ALL)       NOPASSWD: ALL</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EOF</span>
+</pre>
+<p>
+Повторить на <code>vs014</code> и <code>vs015</code>.
+</p>
+
+</div>
+<div class="secedit editbutton_section editbutton_5"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Добавляем пользователя для ansible] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="532-1080"><button type="submit" title="Добавляем пользователя для ansible">Edit</button></div></form></div>
+<h2 class="sectionedit6" id="ssh-ключ_пользователя_для_ansible">SSH-ключ пользователя для ansible</h2>
+<div class="level2">
+
+<p>
+Passphrase совпадает с паролем пользователя в KeePass для записи Hostname: vs1755, Username: tstansible
+</p>
+<pre class="cli"><span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">ssh-keygen -t ed25519</span>
+<span class="cli_output">Generating public/private ed25519 key pair.</span>
+<span class="cli_output">Enter file in which to save the key (/home/tstansible/.ssh/id_ed25519):</span>
+<span class="cli_output">Enter passphrase (empty for no passphrase):</span>
+<span class="cli_output">Enter same passphrase again:</span>
+<span class="cli_output">Your identification has been saved in /home/tstansible/.ssh/id_ed25519.</span>
+<span class="cli_output">Your public key has been saved in /home/tstansible/.ssh/id_ed25519.pub.</span>
+<span class="cli_output">The key fingerprint is:</span>
+<span class="cli_output">SHA256:NGkW7+0m4U4TQQA9BtxhKJxLlADoi2u2jR6Rv1oFj68 tstansible@vs1755.imb.ru</span>
+<span class="cli_output">The key's randomart image is:</span>
+<span class="cli_output">+--[ED25519 256]--+</span>
+<span class="cli_output">|o..+.+o*=o.      |</span>
+<span class="cli_output">|.   * o.==       |</span>
+<span class="cli_output">|.  o o .*.o      |</span>
+<span class="cli_output">| .. =  + o o     |</span>
+<span class="cli_output">|.o.. o  S + .    |</span>
+<span class="cli_output">|..o o    . +     |</span>
+<span class="cli_output">| o o .    = o    |</span>
+<span class="cli_output">|.o= o    o +     |</span>
+<span class="cli_output">|+=oE      .      |</span>
+<span class="cli_output">+----[SHA256]-----+</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">ssh-copy-id vs013</span>
+<span class="cli_output">...</span>
+<span class="cli_output">tstansible@vs013's password:</span>
+<span class="cli_output"></span>
+<span class="cli_output">Number of key(s) added: 1</span>
+<span class="cli_output"></span>
+<span class="cli_output">Now try logging into the machine, with:   "ssh 'vs013'"</span>
+<span class="cli_output">and check to make sure that only the key(s) you wanted were added.</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">ssh-copy-id vs014</span>
+<span class="cli_output">...</span>
+<span class="cli_output">tstansible@vs014's password:</span>
+<span class="cli_output"></span>
+<span class="cli_output">Number of key(s) added: 1</span>
+<span class="cli_output"></span>
+<span class="cli_output">Now try logging into the machine, with:   "ssh 'vs014'"</span>
+<span class="cli_output">and check to make sure that only the key(s) you wanted were added.</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">ssh-copy-id vs015</span>
+<span class="cli_output">...</span>
+<span class="cli_output">tstansible@vs015's password:</span>
+<span class="cli_output"></span>
+<span class="cli_output">Number of key(s) added: 1</span>
+<span class="cli_output"></span>
+<span class="cli_output">Now try logging into the machine, with:   "ssh 'vs015'"</span>
+<span class="cli_output">and check to make sure that only the key(s) you wanted were added.</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">ssh-agent &gt; ~/.ssh/ssh-agent</span>
+<span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">source ~/.ssh/ssh-agent</span>
+<span class="cli_output">Agent pid 84200</span>
+<span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">ssh-add</span>
+<span class="cli_output">Enter passphrase for /home/tstansible/.ssh/id_ed25519:</span>
+<span class="cli_output">Identity added: /home/tstansible/.ssh/id_ed25519 (tstansible@vs1755.imb.ru)</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_6"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[SSH-ключ пользователя для ansible] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="1081-3000"><button type="submit" title="SSH-ключ пользователя для ansible">Edit</button></div></form></div>
+<h2 class="sectionedit7" id="проверить_resolvconf">Проверить resolv.conf</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">cat /etc/resolv.conf</span>
+<span class="cli_output">options timeout:1</span>
+<span class="cli_output">options rotate</span>
+<span class="cli_output">domain imb.ru</span>
+<span class="cli_output">nameserver 172.17.184.150</span>
+<span class="cli_output">nameserver 172.17.160.150</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_7"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Проверить resolv.conf] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="3001-3207"><button type="submit" title="Проверить resolv.conf">Edit</button></div></form></div>
+<h2 class="sectionedit8" id="docker_registry_ssl">Docker registry SSL</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat &gt; /etc/pki/ca-trust/source/anchors/imb.ru.CA.Subordinate_CA_1.crt &lt;&lt; EOF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">-----BEGIN CERTIFICATE-----</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MIID2DCCAsCgAwIBAgIQVj6I6sT32bxLstwAUBpJpjANBgkqhkiG9w0BAQsFADBs</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MQswCQYDVQQGEwJSVTEbMBkGA1UEChMSWkFPIFVuaUNyZWRpdCBCYW5rMRUwEwYD</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">VQQLEwxJQ1QgU2VjdXJpdHkxKTAnBgNVBAMTIFVuaUNyZWRpdCBSdXNzaWEgUHJp</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dmF0ZSBSb290IENBMB4XDTEyMDkxNDA3NTkyOVoXDTI2MDgyNDA3MTIzOFowbDEL</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MAkGA1UEBhMCUlUxGzAZBgNVBAoTElpBTyBVbmlDcmVkaXQgQmFuazEVMBMGA1UE</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">CxMMSUNUIFNlY3VyaXR5MSkwJwYDVQQDEyBVbmlDcmVkaXQgUnVzc2lhIFByaXZh</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dGUgUm9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKIoPBQE</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">uSvf1MSHZ8EabgBocGJgjoX5SoGM7iLelV+L1ygd3JhKm0/93zIy/8GmcTx6h78D</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">5S+FISpFW6XiIgarU3ebrNOBDbeOHT3ZL+Bv0Y0A5gxssHwH50LZl/CVtXarCmSO</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">wkrgegrZTcy0cH661cUb/HoWwlcRdLvGw8AjBp/DOmyqYBKLiNoDVtKWJ9DpgfnZ</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">wevfrp6wUBXTARq+vo7B0+hvtsf8H9srnIePnqDeTXYgps1i+4cDT2/vSsWR21cP</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">DrrKFk6Lw7pf4onbikTf8MguloqMbw0IbUmbSyBwP9IAt3LG1By/+bN3pBbPf74y</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">HQ1HqOsp6UROdXcCAwEAAaN2MHQwCwYDVR0PBAQDAgGGMA8GA1UdEwEB/wQFMAMB</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">Af8wHQYDVR0OBBYEFDkdwDqddE7sQ7Axq6/QbmebjDd4MBAGCSsGAQQBgjcVAQQD</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">AgEBMCMGCSsGAQQBgjcVAgQWBBTc1C82SNcIJsNpEw9U5YWc6YT1MDANBgkqhkiG</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">9w0BAQsFAAOCAQEALKvoxyZda41ymuYFv8/hiFfK4VPG8HPpFfsn1xSCAbFRHXA1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gcc4qXcxO/asqEN0DcYT3+r7H4l6yX3UusQSwIh0zGCZlFQNAjQPj5Moz1ei3vrv</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">heJAgd9zIf4lzUiMeN42Dge+KkTrTkvvnlZk4H59yueAhrvVIdvwJqQ+okkUYFU1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">UJ1TnUw2dDkkgAVyuL8OAam8csdVsoen+cK752nz7K6xyCZE8Y+XZBYdLEqsPmMQ</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">DmMwobDTcWRzukF6RHy/CkVakyS9GE6hrCiDREAAu+nO15JxioghvcTOEq5uJCZ9</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">VZNFGBwafZzYQ4LhF15Yq0fWTvltRwzGUrEl7w==</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">-----END CERTIFICATE-----</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">-----BEGIN CERTIFICATE-----</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MIIFmTCCBIGgAwIBAgITeQAAAAdEeJVx1rUsYwABAAAABzANBgkqhkiG9w0BAQsF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">ADBsMQswCQYDVQQGEwJSVTEbMBkGA1UEChMSWkFPIFVuaUNyZWRpdCBCYW5rMRUw</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EwYDVQQLEwxJQ1QgU2VjdXJpdHkxKTAnBgNVBAMTIFVuaUNyZWRpdCBSdXNzaWEg</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">UHJpdmF0ZSBSb290IENBMB4XDTE2MDgyNDA3MjQyN1oXDTIxMDgyNDA3MzQyN1ow</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gZMxEjAQBgoJkiaJk/IsZAEZFgJSVTETMBEGCgmSJomT8ixkARkWA0lNQjEbMBkG</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">A1UEChMSWkFPIFVuaUNyZWRpdCBCYW5rMRcwFQYDVQQLEw5JQ1QgRGVwYXJ0bWVu</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dDEyMDAGA1UEAxMpVW5pQ3JlZGl0IFJ1c3NpYSBQcml2YXRlIFN1Ym9yZGluYXRl</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">IENBIDEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCep2XLVW/EziBi</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">wvv3vQw6Ruwb8t94WxaGevDPd8rb/zkg6BiWpi0dLdKBzoskotRGz+zqZmoU1Ufo</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">64BDZv9xFtJShkrqI3w3k2ipyD0UTMpv0H18lLN+X6r/M4iJ2Wa7jHGtkr3mmTRw</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">AX9N74frbi6sv2od9dPZeN1XUY1ElwMJVJ5UtZPckH/2bjeJYi5MnI6A4rbZQISN</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">jwUmXtOljUX1NEmuxGcbTYXDbfTaHkai8echgTKmQ0w4v0e2/wvhWgNXZhZ8m1QN</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">eJ/C7NuOU4AgtFZoR4i4+oR2W7UYJ1QnNJzZH24W8QZiB/pjlRR5DIBkTE3cSTMt</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">Hp0rOkwLAgMBAAGjggIKMIICBjAQBgkrBgEEAYI3FQEEAwIBATAjBgkrBgEEAYI3</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">FQIEFgQUWGp9wQ4WNttsat1UyqN8Ndbla0cwHQYDVR0OBBYEFMSsnZEuaffv/Nqj</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">CWiOUnnkUAtNMH0GA1UdIAR2MHQwcgYEVR0gADBqMDAGCCsGAQUFBwIBFiRodHRw</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">Oi8vY3J0aS5pbWIucnUvcGtpL3BvbGljaWVzLmh0bWwwNgYIKwYBBQUHAgEWKmh0</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dHA6Ly9jcnRlLnVuaWNyZWRpdC5ydS9wa2kvcG9saWNpZXMuaHRtbDAZBgkrBgEE</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">AYI3FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">/zAfBgNVHSMEGDAWgBQ5HcA6nXRO7EOwMauv0G5nm4w3eDBbBgNVHR8EVDBSMFCg</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">TqBMhiFodHRwOi8vY3J0aS5pbWIucnUvcGtpL3Jvb3RjYS5jcmyGJ2h0dHA6Ly9j</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">cnRlLnVuaWNyZWRpdC5ydS9wa2kvcm9vdGNhLmNybDB4BggrBgEFBQcBAQRsMGow</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MAYIKwYBBQUHMAKGJGh0dHA6Ly9jcnRpLmltYi5ydS9wa2kvcm9vdGNhKDEpLmNy</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dDA2BggrBgEFBQcwAoYqaHR0cDovL2NydGUudW5pY3JlZGl0LnJ1L3BraS9yb290</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">Y2EoMSkuY3J0MA0GCSqGSIb3DQEBCwUAA4IBAQBJpOrnEmO2sp0VrGB9a/GydbIY</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">aXg3spjcQeMwT2CcM5vQ4P+9gn2co6EbGLdCa4D4h6vdFZjr0oSovmhUC+yZoqEQ</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">FHbKaj7VnFwGltwE8oheU3ZqJuKYnTEzpBu+KNVE5pd4n8dgrH4Vt3PT7gzXDteI</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">3NMFhRcBUZ5U7Htd7eWSEI2bEM2ysyboN/FLxWKfGeYDC/rP1QwmSijRuMFiDQIo</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">HQd0GawLh/YByUKLMBG55GEGHeZW614MpcHoQDQqZdHrQ2puAxK6XuWN8fFaSBz3</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dqZPoHCU18jnz0IaTZjxTl+jQlrckG3qF63H0bvUdvjPBLTwdrhHVE9yPU7a</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">-----END CERTIFICATE-----</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EOF</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">update-ca-trust</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">curl -vvI https://vs1756.imb.ru:5000/v2/</span>
+<span class="cli_output">* About to connect() to vs1756.imb.ru port 5000 (#0)</span>
+<span class="cli_output">*   Trying 172.19.12.79...</span>
+<span class="cli_output">* Connected to vs1756.imb.ru (172.19.12.79) port 5000 (#0)</span>
+<span class="cli_output">* Initializing NSS with certpath: sql:/etc/pki/nssdb</span>
+<span class="cli_output">*   CAfile: /etc/pki/tls/certs/ca-bundle.crt</span>
+<span class="cli_output">...</span>
+<span class="cli_output">&lt; HTTP/1.1 200 OK</span>
+<span class="cli_output">HTTP/1.1 200 OK</span>
+<span class="cli_output">...</span>
+<span class="cli_output"></span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">mkdir /etc/docker/certs.d/vs1756.imb.ru</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">mkdir /etc/docker/certs.d/vs1756.imb.ru:5000</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat &gt; /etc/docker/certs.d/vs1756.imb.ru/ca.crt &lt;&lt; EOF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">-----BEGIN CERTIFICATE-----</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MIID2DCCAsCgAwIBAgIQVj6I6sT32bxLstwAUBpJpjANBgkqhkiG9w0BAQsFADBs</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MQswCQYDVQQGEwJSVTEbMBkGA1UEChMSWkFPIFVuaUNyZWRpdCBCYW5rMRUwEwYD</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">VQQLEwxJQ1QgU2VjdXJpdHkxKTAnBgNVBAMTIFVuaUNyZWRpdCBSdXNzaWEgUHJp</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dmF0ZSBSb290IENBMB4XDTEyMDkxNDA3NTkyOVoXDTI2MDgyNDA3MTIzOFowbDEL</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MAkGA1UEBhMCUlUxGzAZBgNVBAoTElpBTyBVbmlDcmVkaXQgQmFuazEVMBMGA1UE</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">CxMMSUNUIFNlY3VyaXR5MSkwJwYDVQQDEyBVbmlDcmVkaXQgUnVzc2lhIFByaXZh</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dGUgUm9vdCBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKIoPBQE</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">uSvf1MSHZ8EabgBocGJgjoX5SoGM7iLelV+L1ygd3JhKm0/93zIy/8GmcTx6h78D</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">5S+FISpFW6XiIgarU3ebrNOBDbeOHT3ZL+Bv0Y0A5gxssHwH50LZl/CVtXarCmSO</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">wkrgegrZTcy0cH661cUb/HoWwlcRdLvGw8AjBp/DOmyqYBKLiNoDVtKWJ9DpgfnZ</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">wevfrp6wUBXTARq+vo7B0+hvtsf8H9srnIePnqDeTXYgps1i+4cDT2/vSsWR21cP</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">DrrKFk6Lw7pf4onbikTf8MguloqMbw0IbUmbSyBwP9IAt3LG1By/+bN3pBbPf74y</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">HQ1HqOsp6UROdXcCAwEAAaN2MHQwCwYDVR0PBAQDAgGGMA8GA1UdEwEB/wQFMAMB</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">Af8wHQYDVR0OBBYEFDkdwDqddE7sQ7Axq6/QbmebjDd4MBAGCSsGAQQBgjcVAQQD</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">AgEBMCMGCSsGAQQBgjcVAgQWBBTc1C82SNcIJsNpEw9U5YWc6YT1MDANBgkqhkiG</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">9w0BAQsFAAOCAQEALKvoxyZda41ymuYFv8/hiFfK4VPG8HPpFfsn1xSCAbFRHXA1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gcc4qXcxO/asqEN0DcYT3+r7H4l6yX3UusQSwIh0zGCZlFQNAjQPj5Moz1ei3vrv</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">heJAgd9zIf4lzUiMeN42Dge+KkTrTkvvnlZk4H59yueAhrvVIdvwJqQ+okkUYFU1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">UJ1TnUw2dDkkgAVyuL8OAam8csdVsoen+cK752nz7K6xyCZE8Y+XZBYdLEqsPmMQ</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">DmMwobDTcWRzukF6RHy/CkVakyS9GE6hrCiDREAAu+nO15JxioghvcTOEq5uJCZ9</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">VZNFGBwafZzYQ4LhF15Yq0fWTvltRwzGUrEl7w==</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">-----END CERTIFICATE-----</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">-----BEGIN CERTIFICATE-----</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MIIFmTCCBIGgAwIBAgITeQAAAAdEeJVx1rUsYwABAAAABzANBgkqhkiG9w0BAQsF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">ADBsMQswCQYDVQQGEwJSVTEbMBkGA1UEChMSWkFPIFVuaUNyZWRpdCBCYW5rMRUw</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EwYDVQQLEwxJQ1QgU2VjdXJpdHkxKTAnBgNVBAMTIFVuaUNyZWRpdCBSdXNzaWEg</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">UHJpdmF0ZSBSb290IENBMB4XDTE2MDgyNDA3MjQyN1oXDTIxMDgyNDA3MzQyN1ow</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gZMxEjAQBgoJkiaJk/IsZAEZFgJSVTETMBEGCgmSJomT8ixkARkWA0lNQjEbMBkG</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">A1UEChMSWkFPIFVuaUNyZWRpdCBCYW5rMRcwFQYDVQQLEw5JQ1QgRGVwYXJ0bWVu</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dDEyMDAGA1UEAxMpVW5pQ3JlZGl0IFJ1c3NpYSBQcml2YXRlIFN1Ym9yZGluYXRl</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">IENBIDEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCep2XLVW/EziBi</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">wvv3vQw6Ruwb8t94WxaGevDPd8rb/zkg6BiWpi0dLdKBzoskotRGz+zqZmoU1Ufo</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">64BDZv9xFtJShkrqI3w3k2ipyD0UTMpv0H18lLN+X6r/M4iJ2Wa7jHGtkr3mmTRw</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">AX9N74frbi6sv2od9dPZeN1XUY1ElwMJVJ5UtZPckH/2bjeJYi5MnI6A4rbZQISN</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">jwUmXtOljUX1NEmuxGcbTYXDbfTaHkai8echgTKmQ0w4v0e2/wvhWgNXZhZ8m1QN</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">eJ/C7NuOU4AgtFZoR4i4+oR2W7UYJ1QnNJzZH24W8QZiB/pjlRR5DIBkTE3cSTMt</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">Hp0rOkwLAgMBAAGjggIKMIICBjAQBgkrBgEEAYI3FQEEAwIBATAjBgkrBgEEAYI3</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">FQIEFgQUWGp9wQ4WNttsat1UyqN8Ndbla0cwHQYDVR0OBBYEFMSsnZEuaffv/Nqj</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">CWiOUnnkUAtNMH0GA1UdIAR2MHQwcgYEVR0gADBqMDAGCCsGAQUFBwIBFiRodHRw</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">Oi8vY3J0aS5pbWIucnUvcGtpL3BvbGljaWVzLmh0bWwwNgYIKwYBBQUHAgEWKmh0</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dHA6Ly9jcnRlLnVuaWNyZWRpdC5ydS9wa2kvcG9saWNpZXMuaHRtbDAZBgkrBgEE</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">AYI3FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">/zAfBgNVHSMEGDAWgBQ5HcA6nXRO7EOwMauv0G5nm4w3eDBbBgNVHR8EVDBSMFCg</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">TqBMhiFodHRwOi8vY3J0aS5pbWIucnUvcGtpL3Jvb3RjYS5jcmyGJ2h0dHA6Ly9j</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">cnRlLnVuaWNyZWRpdC5ydS9wa2kvcm9vdGNhLmNybDB4BggrBgEFBQcBAQRsMGow</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">MAYIKwYBBQUHMAKGJGh0dHA6Ly9jcnRpLmltYi5ydS9wa2kvcm9vdGNhKDEpLmNy</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dDA2BggrBgEFBQcwAoYqaHR0cDovL2NydGUudW5pY3JlZGl0LnJ1L3BraS9yb290</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">Y2EoMSkuY3J0MA0GCSqGSIb3DQEBCwUAA4IBAQBJpOrnEmO2sp0VrGB9a/GydbIY</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">aXg3spjcQeMwT2CcM5vQ4P+9gn2co6EbGLdCa4D4h6vdFZjr0oSovmhUC+yZoqEQ</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">FHbKaj7VnFwGltwE8oheU3ZqJuKYnTEzpBu+KNVE5pd4n8dgrH4Vt3PT7gzXDteI</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">3NMFhRcBUZ5U7Htd7eWSEI2bEM2ysyboN/FLxWKfGeYDC/rP1QwmSijRuMFiDQIo</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">HQd0GawLh/YByUKLMBG55GEGHeZW614MpcHoQDQqZdHrQ2puAxK6XuWN8fFaSBz3</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">dqZPoHCU18jnz0IaTZjxTl+jQlrckG3qF63H0bvUdvjPBLTwdrhHVE9yPU7a</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">-----END CERTIFICATE-----</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EOF</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cp /etc/docker/certs.d/vs1756.imb.ru/ca.crt /etc/docker/certs.d/vs1756.imb.ru\:5000/</span>
+</pre>
+<p>
+Повторить на <code>vs014</code> и <code>vs015</code>.
+</p>
+
+</div>
+<div class="secedit editbutton_section editbutton_8"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Docker registry SSL] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="3208-11088"><button type="submit" title="Docker registry SSL">Edit</button></div></form></div>
+<h2 class="sectionedit9" id="необходипые_репозитории">Необходипые репозитории</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat &gt; /etc/yum.repos.d/rhel-localrepo-server-extras.repo &lt;&lt; EOF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">[rhel7-repo-extras]</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">name=LocalRepo server-extras for RHEL 7</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">baseurl=http://vs321.imb.ru/repo/rhel-7-server-extras-rpms/</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">enabled=1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gpgcheck=1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gpgkey=http://vs321.imb.ru/repo/rhel7.5/x86_64/RPM-GPG-KEY-redhat-release</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EOF</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat &gt; /etc/yum.repos.d/rhel-localrepo-server-ansible-2.6.repo &lt;&lt; EOF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">[rhel7-repo-ansible-2.6]</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">name=LocalRepo server-ansible-2.6 for RHEL 7</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">baseurl=http://vs321.imb.ru/repo/rhel-7-server-ansible-2.6-rpms/</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">enabled=1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gpgcheck=1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gpgkey=http://vs321.imb.ru/repo/rhel7.5/x86_64/RPM-GPG-KEY-redhat-release</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EOF</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat &gt; /etc/yum.repos.d/rhel-localrepo-ose-3.11.repo &lt;&lt; EOF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">[rhel7-repo-ose-3.11]</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">name=LocalRepo server-ose-3.11 for RHEL 7</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">baseurl=http://vs321.imb.ru/repo/rhel-7-server-ose-3.11-rpms/</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">enabled=1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gpgcheck=1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gpgkey=http://vs321.imb.ru/repo/rhel7.5/x86_64/RPM-GPG-KEY-redhat-release</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EOF</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat &gt; /etc/yum.repos.d/rhel-localrepo-fast-datapath.repo &lt;&lt; EOF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">[rhel7-repo-fast-datapath]</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">name=LocalRepo server-ose-3.11 for RHEL 7</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">baseurl=http://vs321.imb.ru/repo/rhel-7-fast-datapath-rpms/</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">enabled=1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gpgcheck=1</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">gpgkey=http://vs321.imb.ru/repo/rhel7.5/x86_64/RPM-GPG-KEY-redhat-release</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EOF</span>
+</pre>
+<p>
+Повторить на <code>vs014</code> и <code>vs015</code>.
+</p>
+
+</div>
+<div class="secedit editbutton_section editbutton_9"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Необходипые репозитории] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="11089-12507"><button type="submit" title="Необходипые репозитории">Edit</button></div></form></div>
+<h2 class="sectionedit10" id="необходипые_пакеты">Необходипые пакеты</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum update -y</span>
+</pre><pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum install -y wget net-tools bind-utils iptables-services bridge-utils</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Complete!</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum install -y git yum-utils bash-completion kexec-tools sos psacct</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Complete!</span>
+</pre><pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum install -y docker</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Complete!</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum install -y python-requests</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Complete!</span>
+</pre><pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum install -y ansible.noarch</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Complete!</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum install -y openshift-ansible-playbooks</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Complete!</span>
+</pre><pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum -y install cri-o</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Complete!</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">yum install -y nfs-utils.x86_64</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Complete!</span>
+</pre>
+<p>
+Повторить на <code>vs014</code> и <code>vs015</code>.
+</p>
+
+</div>
+<div class="secedit editbutton_section editbutton_10"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Необходипые пакеты] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="12508-13325"><button type="submit" title="Необходипые пакеты">Edit</button></div></form></div>
+<h2 class="sectionedit11" id="активировать_и_запустить_networkmanager">Активировать и запустить NetworkManager</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">systemctl enable NetworkManager.service</span>
+<span class="cli_output">Created symlink from /etc/systemd/system/dbus-org.freedesktop.NetworkManager.service to /usr/lib/systemd/system/NetworkManager.service.</span>
+<span class="cli_output">Created symlink from /etc/systemd/system/multi-user.target.wants/NetworkManager.service to /usr/lib/systemd/system/NetworkManager.service.</span>
+<span class="cli_output">Created symlink from /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service to /usr/lib/systemd/system/NetworkManager-dispatcher.service.</span>
+<span class="cli_output">Created symlink from /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service to /usr/lib/systemd/system/NetworkManager-wait-online.service.</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">systemctl restart NetworkManager.service</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">systemctl status NetworkManager.service</span>
+<span class="cli_output">● NetworkManager.service - Network Manager</span>
+<span class="cli_output">   Loaded: loaded (/usr/lib/systemd/system/NetworkManager.service; enabled; vendor preset: enabled)</span>
+<span class="cli_output">   Active: active (running) since Mon 2019-06-10 16:46:02 MSK; 7s ago</span>
+<span class="cli_output">     Docs: man:NetworkManager(8)</span>
+<span class="cli_output"> Main PID: 2569 (NetworkManager)</span>
+<span class="cli_output">   CGroup: /system.slice/NetworkManager.service</span>
+<span class="cli_output">           └─2569 /usr/sbin/NetworkManager --no-daemon</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Jun 10 16:46:02 vs013.imb.ru NetworkManager[2569]: &lt;info&gt;  [1560174362.7219] manager: startup complete</span>
+<span class="cli_output">Hint: Some lines were ellipsized, use -l to show in full.</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">grep ^NM_CONTROLLED /etc/sysconfig/network-scripts/ifcfg-eth0</span>
+<span class="cli_output">NM_CONTROLLED=yes</span>
+</pre>
+<p>
+Повторить на <code>vs014</code> и <code>vs015</code>.
+</p>
+
+</div>
+<div class="secedit editbutton_section editbutton_11"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Активировать и запустить NetworkManager] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="13326-14885"><button type="submit" title="Активировать и запустить NetworkManager">Edit</button></div></form></div>
+<h2 class="sectionedit12" id="rpcbind_и_software-definetd_сеть">RPCBind и SoftWare-Definetd сеть</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">systemctl enable rpcbind.service</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">mv /etc/cni/net.d/100-crio-bridge.conf ~/</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">mv /etc/cni/net.d/200-loopback.conf ~/</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">shutdown -r now</span>
+</pre>
+<p>
+Повторить на <code>vs014</code> и <code>vs015</code>.
+</p>
+
+</div>
+<div class="secedit editbutton_section editbutton_12"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[RPCBind и SoftWare-Definetd сеть] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="14886-15212"><button type="submit" title="RPCBind и SoftWare-Definetd сеть">Edit</button></div></form></div>
+<h2 class="sectionedit13" id="lvm_thin_pool_in_a_user_specified_volume_group">LVM thin pool in a user specified volume group</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">systemctl stop docker docker-storage-setup</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">rm -rf /var/lib/docker/*</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">echo VG=dockervg &gt;&gt; /etc/sysconfig/docker-storage-setup</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat /etc/sysconfig/docker-storage &lt;&lt; EOF</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">EOF</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">vi /etc/sysconfig/docker-storage-setup</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat /etc/sysconfig/docker-storage-setup</span>
+<span class="cli_output">#STORAGE_DRIVER=overlay2</span>
+<span class="cli_output">VG=dockervg</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">pvcreate /dev/xvdb1</span>
+<span class="cli_output">  Physical volume "/dev/xvdb1" successfully created.</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">vgcreate dockervg /dev/xvdb1</span>
+<span class="cli_output">  Volume group "dockervg" successfully created</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">systemctl start docker-storage-setup</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">systemctl start docker</span>
+</pre>
+<p>
+Повторить на vs014 и vs015.
+</p>
+
+<p>
+docker-pool
+</p>
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">cat /etc/sysconfig/docker-storage</span>
+<span class="cli_output">DOCKER_STORAGE_OPTIONS="--storage-driver devicemapper --storage-opt dm.fs=xfs --storage-opt dm.thinpooldev=/dev/mapper/dockervg-docker--pool --storage-opt dm.use_deferred_removal=true --storage-opt dm.use_deferred_deletion=true "</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">vgs dockervg</span>
+<span class="cli_output">  VG       #PV #LV #SN Attr   VSize    VFree</span>
+<span class="cli_output">  dockervg   1   1   0 wz--n- &lt;100.00g 60.00g</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">lvs dockervg</span>
+<span class="cli_output">  LV          VG       Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert</span>
+<span class="cli_output">  docker-pool dockervg twi-aot--- 39.79g             14.14  13.03</span>
+</pre>
+<p>
+Повторить на vs014 и vs015.
+</p>
+<pre class="cli"><span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">pvcreate /dev/xvdc1</span>
+<span class="cli_output">  Physical volume "/dev/xvdc1" successfully created.</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">vgcreate nfsvg /dev/xvdc1</span>
+<span class="cli_output">  Volume group "nfsvg" successfully created</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">lvcreate --extents 33%FREE -n exportslv nfsvg</span>
+<span class="cli_output">  Logical volume "exportslv" created.</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 /]# </span><span class="cli_command">mkfs.ext4 -L exports /dev/mapper/nfsvg-exportslv</span>
+<span class="cli_output">mke2fs 1.42.9 (28-Dec-2013)</span>
+<span class="cli_output">...</span>
+<span class="cli_output">Allocating group tables: done</span>
+<span class="cli_output">Writing inode tables: done</span>
+<span class="cli_output">Creating journal (32768 blocks): done</span>
+<span class="cli_output">Writing superblocks and filesystem accounting information: done</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 /]# </span><span class="cli_command">mount /exports</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_13"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[LVM thin pool in a user specified volume group] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="15213-17269"><button type="submit" title="LVM thin pool in a user specified volume group">Edit</button></div></form></div>
+<h2 class="sectionedit14" id="установка">Установка</h2>
+<div class="level2">
+
+<p>
+<a href="https://wiki.imb.ru/_export/code/linux:openshift:installation:inventory-hosts?codeblock=0" class="urlextern" title="https://wiki.imb.ru/_export/code/linux:openshift:installation:inventory-hosts?codeblock=0" rel="nofollow">ansible/openshift-ansible/inventory/host</a>
+</p>
+<pre class="cli"><span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">ansible-playbook -i ~/ansible/openshift-ansible/inventory/hosts ~/ansible/openshift-ansible/playbooks/prerequisites.yml</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[tstansible@vs1755 ~]$ </span><span class="cli_command">ansible-playbook -i ~/ansible/openshift-ansible/inventory/hosts ~/ansible/openshift-ansible/playbooks/deploy_cluster.yml</span>
+<span class="cli_output">...</span>
+<span class="cli_output">PLAY RECAP ******************************************************************************************************************************************************************</span>
+<span class="cli_output">localhost                  : ok=12   changed=0    unreachable=0    failed=0</span>
+<span class="cli_output">vs013.imb.ru               : ok=666  changed=169  unreachable=0    failed=0</span>
+<span class="cli_output">vs014.imb.ru               : ok=105  changed=19   unreachable=0    failed=0</span>
+<span class="cli_output">vs015.imb.ru               : ok=115  changed=20   unreachable=0    failed=0</span>
+<span class="cli_output"></span>
+<span class="cli_output"></span>
+<span class="cli_output">INSTALLER STATUS ************************************************************************************************************************************************************</span>
+<span class="cli_output">Initialization               : Complete (0:00:33)</span>
+<span class="cli_output">Health Check                 : Complete (0:00:08)</span>
+<span class="cli_output">Node Bootstrap Preparation   : Complete (0:02:33)</span>
+<span class="cli_output">etcd Install                 : Complete (0:00:48)</span>
+<span class="cli_output">NFS Install                  : Complete (0:00:10)</span>
+<span class="cli_output">Master Install               : Complete (0:04:46)</span>
+<span class="cli_output">Master Additional Install    : Complete (0:01:02)</span>
+<span class="cli_output">Node Join                    : Complete (0:00:32)</span>
+<span class="cli_output">Hosted Install               : Complete (0:00:59)</span>
+<span class="cli_output">        The use of NFS for the core OpenShift Container Platform components is not recommended, as NFS (and the NFS Protocol) does not provide the proper consistency needed for the applications that make up the OpenShift Container Platform infrastructure.</span>
+<span class="cli_output">Cluster Monitoring Operator  : Complete (0:03:54)</span>
+<span class="cli_output">Web Console Install          : Complete (0:00:38)</span>
+<span class="cli_output">Console Install              : Complete (0:00:28)</span>
+<span class="cli_output">metrics-server Install       : Complete (0:00:01)</span>
+<span class="cli_output">Service Catalog Install      : Complete (0:04:14)</span>
+<span class="cli_output">Monday 17 June 2019  16:15:56 +0300 (0:00:00.031)       0:21:18.074 ***********</span>
+<span class="cli_output">===============================================================================</span>
+<span class="cli_output">openshift_cluster_monitoring_operator : Wait for the ServiceMonitor CRD to be created ------------------------------------------------------------------------------ 217.53s</span>
+<span class="cli_output">template_service_broker : Verify that TSB is running ---------------------------------------------------------------------------------------------------------------- 48.80s</span>
+<span class="cli_output">openshift_service_catalog : Wait for Controller Manager rollout success --------------------------------------------------------------------------------------------- 34.31s</span>
+<span class="cli_output">openshift_service_catalog : oc_process ------------------------------------------------------------------------------------------------------------------------------ 26.01s</span>
+<span class="cli_output">openshift_service_catalog : Wait for API Server rollout success ----------------------------------------------------------------------------------------------------- 25.26s</span>
+<span class="cli_output">openshift_node_group : Wait for the sync daemonset to become ready and available ------------------------------------------------------------------------------------ 22.90s</span>
+<span class="cli_output">openshift_web_console : Verify that the console is running ---------------------------------------------------------------------------------------------------------- 22.65s</span>
+<span class="cli_output">openshift_console : Waiting for console rollout to complete --------------------------------------------------------------------------------------------------------- 12.85s</span>
+<span class="cli_output">openshift_control_plane : Wait for APIs to become available --------------------------------------------------------------------------------------------------------- 10.04s</span>
+<span class="cli_output">openshift_manageiq : Configure role/user permissions ----------------------------------------------------------------------------------------------------------------- 9.18s</span>
+<span class="cli_output">openshift_node : Add firewalld allow rules --------------------------------------------------------------------------------------------------------------------------- 7.52s</span>
+<span class="cli_output">openshift_node : Install node, clients, and conntrack packages ------------------------------------------------------------------------------------------------------- 7.28s</span>
+<span class="cli_output">Run health checks (install) - EL ------------------------------------------------------------------------------------------------------------------------------------- 7.07s</span>
+<span class="cli_output">ansible_service_broker : Create custom resource definitions for asb -------------------------------------------------------------------------------------------------- 6.12s</span>
+<span class="cli_output">openshift_node : Update journald setup ------------------------------------------------------------------------------------------------------------------------------- 5.55s</span>
+<span class="cli_output">tuned : Ensure files are populated from templates -------------------------------------------------------------------------------------------------------------------- 5.34s</span>
+<span class="cli_output">openshift_sdn : Copy templates to temp directory --------------------------------------------------------------------------------------------------------------------- 5.05s</span>
+<span class="cli_output">Approve node certificates when bootstrapping ------------------------------------------------------------------------------------------------------------------------- 5.02s</span>
+<span class="cli_output">template_service_broker : copy --------------------------------------------------------------------------------------------------------------------------------------- 4.81s</span>
+<span class="cli_output">openshift_examples : Import xPaas templates -------------------------------------------------------------------------------------------------------------------------- 4.64s</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_14"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Установка] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="17270-22987"><button type="submit" title="Установка">Edit</button></div></form></div>
+<h2 class="sectionedit15" id="restart_master_services">Restart master services</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt"># </span><span class="cli_command">master-restart api</span>
+<span class="cli_prompt"># </span><span class="cli_command">master-restart controllers</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_15"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Restart master services] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="22988-23100"><button type="submit" title="Restart master services">Edit</button></div></form></div>
+<h2 class="sectionedit16" id="imagepolicyconfig">imagePolicyConfig</h2>
+<div class="level2">
+<pre class="cli"><span class="cli_prompt"># </span><span class="cli_command">grep -A 3 ^imagePolicyConfig /etc/origin/master/master-config.yaml</span>
+<span class="cli_output">imagePolicyConfig:</span>
+<span class="cli_output">  additionalTrustedCA: /etc/origin/master/imb.ru.CA.Subordinate_CA_1.crt</span>
+<span class="cli_output">  externalRegistryHostname: vs1756.imb.ru:5000</span>
+<span class="cli_output">  internalRegistryHostname: docker-registry.default.svc:5000</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_16"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[imagePolicyConfig] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="23101-23427"><button type="submit" title="imagePolicyConfig">Edit</button></div></form></div>
+<h2 class="sectionedit17" id="import_images_from_external_registries">IMPORT IMAGES FROM EXTERNAL REGISTRIES</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> <a href="https://docs.openshift.com/container-platform/3.11/day_two_guide/docker_tasks.html#import-images-from-external-registries" class="urlextern" title="https://docs.openshift.com/container-platform/3.11/day_two_guide/docker_tasks.html#import-images-from-external-registries" rel="nofollow">Import images to create imagestreams using the oc import-image </a></div>
+</li>
+</ul>
+
+</div>
+<div class="secedit editbutton_section editbutton_17"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[IMPORT IMAGES FROM EXTERNAL REGISTRIES] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="23428-23673"><button type="submit" title="IMPORT IMAGES FROM EXTERNAL REGISTRIES">Edit</button></div></form></div>
+<h3 class="sectionedit18" id="attach_the_secret_to_the_docker-registry">Attach the secret to the docker-registry:</h3>
+<div class="level3">
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">update-ca-trust enable</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">oc secrets new --namespace=default registry-ca-bundle /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem</span>
+<span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">oc set volume dc/docker-registry \</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">--add --namespace=default --type=secret --name=registry-ca-bundle \</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">--secret-name=registry-ca-bundle --mount-path=/etc/pki/ca-trust/extracted/pem</span>
+</pre><pre class="code file bash"><span class="kw1">for</span> i <span class="kw1">in</span> pem openssl <span class="kw2">java</span>; <span class="kw1">do</span>
+  oc create configmap ca-trust-extracted-<span class="co1">${i}</span> <span class="re5">--from-file</span> <span class="sy0">/</span>etc<span class="sy0">/</span>pki<span class="sy0">/</span>ca-trust<span class="sy0">/</span>extracted<span class="sy0">/</span><span class="co1">${i}</span>
+  oc <span class="kw1">set</span> volume dc<span class="sy0">/</span>docker-registry <span class="re5">--add</span> <span class="re5">-m</span> <span class="sy0">/</span>etc<span class="sy0">/</span>pki<span class="sy0">/</span>ca-trust<span class="sy0">/</span>extracted<span class="sy0">/</span><span class="co1">${i}</span> <span class="re5">--configmap-name</span>=ca-trust-extracted-<span class="co1">${i}</span> <span class="re5">--name</span> ca-trust-extracted-<span class="co1">${i}</span>
+<span class="kw1">done</span></pre>
+<pre class="cli"><span class="cli_prompt">[root@vs013 ~]# </span><span class="cli_command">oc patch dc docker-registry -p \</span>
+<span class="cli_prompt">&gt; </span><span class="cli_command">'{"spec":{"template":{"spec":{"containers":[{"name":"registry","image":"vs1756.imb.ru/openshift3/ose-docker-registry:v3.11.98"}]}}}}'</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_18"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Attach the secret to the docker-registry:] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="23674-24619"><button type="submit" title="Attach the secret to the docker-registry:">Edit</button></div></form></div>
+<h3 class="sectionedit19" id="черновик">Черновик</h3>
+<div class="level3">
+<pre class="cli"><span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --permanent --add-port=111/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --permanent --add-port=54302/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --permanent --add-port=54302/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --permanent --add-port=20048/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output">[root@vs015 ~]#</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --permanent --add-port=46666/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output">[root@vs015 ~]#</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --permanent --add-port=42955/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output">[root@vs015 ~]#</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --permanent --add-port=875/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-port=111/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output">[root@vs015 ~]#</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-port=54302/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output">[root@vs015 ~]#</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-port=20048/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output">[root@vs015 ~]#</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-port=46666/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output">[root@vs015 ~]#</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-port=42955/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output">[root@vs015 ~]#</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-port=875/tcp</span>
+<span class="cli_output">success</span>
+<span class="cli_output"></span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-service=rpc-bind --permanent</span>
+<span class="cli_output">success</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-service=nfs --permanent</span>
+<span class="cli_output">success</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">firewall-cmd --add-service=nfs3 --permanent</span>
+<span class="cli_output">success</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl enable rpcbind.service</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl restart rpcbind.service</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl enable nfs.service</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl restart  nfs.service</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl start nfs-idmapd.service</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl enable nfs-mountd.service</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl restart nfs-mountd.service</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl enable nfs-server.service</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl restart nfs-server.service</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl enable nfs-lock.service</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl restart nfs-lock.service</span>
+<span class="cli_output"></span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl enable nfs-idmap</span>
+<span class="cli_prompt">[root@vs015 ~]# </span><span class="cli_command">systemctl restart nfs-idmap</span>
+</pre>
+</div>
+<div class="secedit editbutton_section editbutton_19"><form class="button btn_secedit" method="post" action="https://wiki.imb.ru/linux:openshift:installation"><div class="no"><input type="hidden" name="do" value="edit"><input type="hidden" name="rev" value="1562079306"><input type="hidden" name="summary" value="[Черновик] "><input type="hidden" name="target" value="section"><input type="hidden" name="range" value="24620-"><button type="submit" title="Черновик">Edit</button></div></form></div>
+<script type="text/javascript">
+syntaxhighlighterConfig = {
+  autoLinks: true,
+  gutter: true,
+  htmlScript: false,
+  tabSize: 4,
+  smartTabs: true
+}
+</script>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                <div class="docInfo"><bdi>linux/openshift/installation.txt</bdi> · Last modified: 2019/07/02 17:55 by <bdi>mb24681</bdi></div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y">
+
+            <!-- PAGE ACTIONS -->
+            <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="https://wiki.imb.ru/linux:openshift:installation?do=edit" class="action edit" accesskey="e" rel="nofollow" title="Edit this page [E]"><span>Edit this page</span></a></li><li><a href="https://wiki.imb.ru/linux:openshift:installation?do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]"><span>Old revisions</span></a></li><li><a href="https://wiki.imb.ru/linux:openshift:installation?do=backlink" class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="https://wiki.imb.ru/linux:openshift:installation#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer"><div class="pad">
+    <div class="license">Except where otherwise noted, content on this wiki is licensed under the following license: <bdi><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="urlextern">CC Attribution-Share Alike 4.0 International</a></bdi></div>
+    <div class="buttons">
+        <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license"><img src="./linux_openshift_installation_files/cc-by-sa.png" alt="CC Attribution-Share Alike 4.0 International"></a>        <a href="http://www.dokuwiki.org/donate" title="Donate"><img src="./linux_openshift_installation_files/button-donate.gif" width="80" height="15" alt="Donate"></a>
+        <a href="http://php.net/" title="Powered by PHP"><img src="./linux_openshift_installation_files/button-php.gif" width="80" height="15" alt="Powered by PHP"></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5"><img src="./linux_openshift_installation_files/button-html5.png" width="80" height="15" alt="Valid HTML5"></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS"><img src="./linux_openshift_installation_files/button-css.png" width="80" height="15" alt="Valid CSS"></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki"><img src="./linux_openshift_installation_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki"></a>
+    </div>
+</div></div><!-- /footer -->
+
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="./linux_openshift_installation_files/indexer.php" width="2" height="1" alt=""></div>
+    <div id="screen__mode" class="no"></div>
+
+</body></html>

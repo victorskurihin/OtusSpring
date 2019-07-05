@@ -1,0 +1,74 @@
+# This is the default ansible 'hosts' file.
+#
+[nfs]
+vs015.imb.ru
+
+[masters]
+vs013.imb.ru
+
+[etcd]
+vs013.imb.ru
+
+[nodes]
+vs013.imb.ru openshift_node_group_name="node-config-master-infra" hello_message="I am an OSEv3 master."
+vs014.imb.ru openshift_node_group_name='node-config-compute'
+vs015.imb.ru openshift_node_group_name="node-config-compute"
+#vs1758.imb.ru openshift_node_group_name='node-config-infra'
+
+[OSEv3:children]
+masters
+etcd
+nodes
+nfs
+
+[OSEv3:vars]
+#
+hello_message="I am an OSEv3 machine."
+os_firewall_use_firewalld=true
+
+
+openshift_deployment_type=openshift-enterprise
+# deployment_subtype=registry
+# osm_disabled_features=[]
+
+openshift_image_tag=v3.11.98
+openshift_disable_check=disk_availability,docker_image_availability
+
+openshift_check_min_host_disk_gb=7
+openshift_check_min_host_memory_gb=7
+
+## BASIC AUTH ## openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
+
+openshift_master_identity_providers=[{'name': 'ad_provider', 'challenge': 'true', 'login': 'true', 'kind': 'LDAPPasswordIdentityProvider', 'attributes': {'id': ['dn'], 'email': ['mail'], 'name': ['cn'], 'preferredUsername': ['uid']}, 'bindDN': 'CN=srvopenshift,OU=Service_Accounts,OU=IMB _Special_,DC=IMB,DC=RU', 'bindPassword': 'XXXXXXXX', 'ca': '', 'insecure': 'false', 'url': 'ldaps://KS08.IMB.RU:636/DC=IMB,DC=RU?sAMAccountName?sub?(&(objectClass=person)(memberOf=CN=SrvLinuxAdmin,OU=VMWare,OU=IMB _Special_,DC=IMB,DC=RU))'}]
+openshift_master_ldap_ca_file=/etc/origin/master/imb.ru.CA.Subordinate_CA_1.crt
+
+openshift_public_hostname=vs013.imb.ru
+openshift_master_default_subdomain=openshift-test.intranet
+
+openshift_console_install=true
+openshift_console_hostname=vs013.openshift-test.intranet
+
+openshift_master_cluster_hostname=vs013.imb.ru
+openshift_master_cluster_public_hostname=vs013.openshift-test.intranet
+
+openshift_master_overwrite_named_certificates=true
+openshift_master_named_certificates=[ {"certfile": "/etc/origin/master/vs013.master.server.crt", "keyfile": "/etc/origin/master/vs013.master.server.key", "names": ["vs013.openshift-test.intranet"], "cafile": "/etc/origin/master/imb.ru.CA.Subordinate_CA_1.crt"}]
+
+openshift_hosted_router_certificate={"certfile": "/etc/origin/master/openshift-test.intranet.pem.crt", "keyfile": "/etc/origin/master/openshift-test.intranet.unencrypted.pem", "cafile": "/etc/origin/master/imb.ru.CA.Subordinate_CA_1.crt"}
+
+openshift_docker_hosted_registry_insecure=true
+
+oreg_test_login=false
+openshift_web_console_install=true
+openshift_web_console_prefix="vs1756.imb.ru:5000/openshift3/"
+openshift_install_examples=true
+
+oreg_url=vs1756.imb.ru:5000/openshift3/ose-${component}:${version}
+openshift_examples_modify_imagestreams=true
+
+openshift_docker_additional_registries=vs1756.imb.ru:5000, vs1756.imb.ru
+openshift_docker_insecure_registries=vs1756.imb.ru:5000, vs1756.imb.ru
+openshift_docker_blocked_registries=registry.access.redhat.com, docker.io, registry.redhat.io, registry.fedoraproject.org, quay.io, registry.centos.org
+openshift_docker_disable_push_dockerhub=true
+
+openshift_master_image_policy_config={"imagePolicyConfig":{"allowedRegistriesForImport":[{"domainName":"vs1756.imb.ru"},{"domainName":"vs1756.imb.ru:5000"}]}}

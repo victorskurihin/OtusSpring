@@ -1,9 +1,5 @@
-# java-2018-11-VSkurikhin
-## "Разработчик на Spring Framework"
+# 2019-07-VSkurikhin
+## OpenShift 3.11
 
-#### (C) 2019-04
+#### (C) 2019-07
 ##### @Author Виктор Скурихин (Victor Skurikhin)
-
-### HomeWork-16
- * [x] Использовать метрики, healthchecks и logfile к приложению
- * [ ] Опционально: переписать приложение на HATEOAS принципах.
